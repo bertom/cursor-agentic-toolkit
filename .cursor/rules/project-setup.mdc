@@ -1,0 +1,120 @@
+---
+description: Guides agents through project setup and context initialization
+globs:
+alwaysApply: false
+---
+
+# Project Setup Guide
+
+When the user asks to set up a project, initialize context, or says they're starting a new project, follow this procedure.
+
+## Step 1: Identify the Project
+
+Ask or confirm:
+- Project name
+- Is it an existing repo or new?
+- If existing, where to clone from
+
+Ensure the project lands in `projects/<project-name>/`.
+
+## Step 2: Scan Existing Project (if applicable)
+
+If the project already has code, scan it before asking questions. Use the results to **fill in `agentic/context/technical-context.md` directly** — don't ask the user for information the code already provides.
+
+### What to scan
+
+1. **Dependency files** — `package.json`, `requirements.txt`, `Cargo.toml`, `go.mod`, `Gemfile`, `composer.json`, `pyproject.toml`
+2. **Framework indicators** — `next.config.*`, `vite.config.*`, `nuxt.config.*`, `angular.json`, `svelte.config.*`, `astro.config.*`, `django/settings.py`, `config/routes.rb`
+3. **Config files** — `.env.example`, `docker-compose.yml`, `tsconfig.json`, `tailwind.config.*`, `.eslintrc.*`, `jest.config.*`, `vitest.config.*`
+4. **CI/CD** — `.github/workflows/`, `.gitlab-ci.yml`, `Jenkinsfile`, `Dockerfile`
+5. **Documentation** — `README.md`, `CONTRIBUTING.md`, `docs/`, `CHANGELOG.md`
+6. **Git history** — `git log --oneline -20` for project age, activity, and contributor count
+
+### How to fill technical-context.md from scan
+
+Map scan findings directly into the file:
+
+- **Active Project** → set project name and path from Step 1
+- **Project Mode** → infer from git history: no history = `new`, active recent commits = `active`, infrequent maintenance commits = `mature`, old repo with sparse activity = `legacy`
+- **Technology Stack table** → fill each row from detected dependencies and configs:
+  - Language → from dependency file type (`package.json` = JS/TS, `requirements.txt` = Python, etc.)
+  - Framework → from framework config files or main dependency
+  - Database → from dependencies (prisma, mongoose, sqlalchemy, etc.) or docker-compose services
+  - Hosting → from CI/CD targets or Dockerfile
+  - CI/CD → from workflow files
+  - Testing → from test config files or test dependencies
+  - CSS/Styling → from tailwind config, styled-components, sass deps, etc.
+  - Auth → from auth-related dependencies (next-auth, passport, etc.)
+  - API Style → from route structure (REST, GraphQL, tRPC, etc.)
+- **Architecture Overview** → infer from folder structure (monorepo, monolith, microservices, etc.)
+- **Integration Points** → from external service dependencies, API clients, or docker-compose services
+- **Development Environment** → from `.env.example`, `docker-compose.yml`, README setup instructions
+- **Deployment** → from CI/CD configs, Dockerfiles, hosting platform configs
+- **Known Technical Debt** → from outdated major dependencies, TODO comments count, deprecation warnings in configs
+
+### Present and confirm
+
+After filling in technical-context.md, present a summary to the user:
+
+> "I scanned your project and found: [language] with [framework], using [database], deployed via [platform]. I've filled in the technical context. Does this look right? Anything to correct or add?"
+
+Only ask the user about things the scan couldn't determine.
+
+## Step 3: Walk Through Context Files
+
+Guide the user through each remaining context file conversationally. Technical context should already be mostly filled from the scan — only ask about gaps.
+
+### Technical Context (`agentic/context/technical-context.md`)
+Confirm the scan results, then ask about anything missing:
+- Project mode (if not obvious from git history)
+- Architecture style (if not clear from folder structure)
+- Deployment environments (if not detectable from configs)
+- Known technical debt (user may know about non-obvious issues)
+
+### Business Context (`agentic/context/business-context.md`)
+Ask about:
+- Project purpose (1-3 sentences)
+- Target users
+- Business goals
+- Success metrics
+
+### Constraints (`agentic/context/constraints.md`)
+Ask about:
+- Timeline / deadlines
+- Budget constraints
+- Regulatory requirements
+- Performance targets
+- Browser / device support
+
+### Client Input (`agentic/context/client-input.md`)
+Ask if there's a client involved. If yes:
+- Requirements received
+- Design preferences
+- Feature priorities
+
+If no client, note "Not applicable" in the file.
+
+### Package Policy (`agentic/context/package-policy.md`)
+Ask about:
+- Preferred frameworks / libraries
+- Libraries to avoid
+- Dependency philosophy (minimal vs. batteries-included)
+
+### Governance (`agentic/context/governance.md`)
+Review defaults and ask about preferences:
+- **Git:** Should agents commit? (default: yes, with descriptive messages) Should agents push? (default: no)
+- **Branching:** Preferred branch naming? (default: `feature/<slug>`)
+- **Security:** Any additional sensitive file patterns beyond the defaults?
+- **Approval gates:** Any actions beyond the defaults that should require approval?
+
+Most users can keep the defaults. Only update if they have specific preferences.
+
+## Step 4: Update Index
+
+After filling in context:
+1. Update `agentic/index/context-index.md` with status of each file
+2. Update `agentic/index/repo-map.md` with project details
+
+## Step 5: Confirm Setup
+
+Summarize what was configured and what's still missing. Suggest next steps (usually: "describe your first feature").

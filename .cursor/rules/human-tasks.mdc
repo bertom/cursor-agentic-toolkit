@@ -1,0 +1,36 @@
+---
+description: Rules for creating and managing human tasks
+globs:
+  - agentic/human-tasks/**
+alwaysApply: false
+---
+
+# Human Task Management
+
+## When to Create a Human Task
+
+Create a human task whenever you encounter something that requires:
+- Dashboard or portal access (Stripe, Supabase, Vercel, AWS Console, etc.)
+- API key generation or rotation
+- DNS configuration
+- OAuth provider setup
+- Legal or compliance approval
+- Billing or payment configuration
+- App store submissions
+- Any action requiring credentials or access you don't have
+
+## How to Create One
+
+1. Read the template at `agentic/human-tasks/human-task-template.md`
+2. Create a new file in `agentic/human-tasks/pending/` with a descriptive name (e.g., `setup-stripe-webhook.md`)
+3. Fill in all sections — especially **Steps** and **Expected Return Information**
+4. Note the blocking relationship in the current task pack
+5. Tell the user about the human task and what it blocks
+6. Continue with non-blocked work
+
+## Key Principles
+
+- **Be specific** — step-by-step instructions, not vague descriptions
+- **State what you need back** — what information should the human provide after completing the task?
+- **Define done** — validation criteria so the human knows if they did it correctly
+- **Link to blocked work** — so the human understands the urgency

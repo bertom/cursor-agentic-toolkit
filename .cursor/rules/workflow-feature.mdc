@@ -1,0 +1,71 @@
+---
+description: Guides agents through the feature workflow — from intent to QA
+globs:
+alwaysApply: false
+---
+
+# Feature Workflow
+
+When the user describes a feature, enhancement, or significant change, follow the workflow chain.
+
+## Detect Intent
+
+If the user says things like:
+- "I want to build..."
+- "We need to add..."
+- "Can you implement..."
+- "Let's create..."
+
+Start with a feature brief unless the change is trivial (typo, formatting, single-line fix).
+
+## Workflow Steps
+
+### 1. Feature Brief
+- Read `agentic/workflow/templates/feature-brief-template.md`
+- Create a new file in `agentic/workflow/briefs/` named `FB-NNN-<slug>.md`
+- Fill in based on the user's description
+- Present to user for approval before proceeding
+
+### 2. Spec
+- Read `agentic/workflow/templates/spec-template.md`
+- Create `SP-NNN-<slug>.md` in `agentic/workflow/specs/`
+- Reference the feature brief
+- Check `agentic/context/package-policy.md` if new dependencies are needed
+- Present to user for approval
+
+### 3. Decision Note (if needed)
+- Read `agentic/workflow/templates/decision-note-template.md`
+- Create `DN-NNN-<slug>.md` in `agentic/workflow/decisions/`
+- Document options, recommendation, and consequences
+- Get user decision before proceeding
+
+### 4. Task Pack
+- Read `agentic/workflow/templates/task-pack-template.md`
+- Create `TP-NNN-<slug>.md` in `agentic/workflow/tasks/`
+- Break spec into small tasks (each completable in one session)
+- Identify any human tasks, create them in `agentic/human-tasks/pending/`
+- Present to user for approval
+
+### 5. Implementation
+- Work through tasks one at a time in `projects/<project-name>/`
+- Follow all rules in `agentic/rules/agent-behavior.md`
+- After completing all tasks, move to QA
+
+### 6. QA Report
+- Read `agentic/workflow/templates/qa-report-template.md`
+- Run all applicable checks
+- Create `QA-NNN-<slug>.md` in `agentic/workflow/qa/`
+- Report results to user
+
+### 7. Documentation Update
+- Update `agentic/index/repo-map.md` if structure changed
+- Update `agentic/index/context-index.md` if new context was created
+- Update context files if decisions or constraints changed
+
+## Numbering Convention
+
+Use sequential numbers: FB-001, SP-001, TP-001, QA-001, DN-001. Check existing files in the relevant `agentic/workflow/` subfolder to find the next number.
+
+## Session Boundaries
+
+A single chat session may not cover the entire workflow. That's fine — artifacts are stored in files. The next session picks up from where the last one left off by reading the existing artifacts.

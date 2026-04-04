@@ -1,0 +1,46 @@
+---
+description: Rules for running QA checks and producing QA reports
+globs:
+  - agentic/workflow/qa/**
+alwaysApply: false
+---
+
+# QA Check Procedure
+
+## When to Run QA
+
+- After completing all tasks in a task pack
+- When the user asks for a health check or QA review
+- Before declaring any non-trivial work complete
+
+## Steps
+
+1. Read `agentic/workflow/templates/qa-report-template.md`
+2. Determine which checks apply to this project (read `agentic/context/technical-context.md` for stack info)
+3. Run each applicable check:
+   - **Lint** — run the project's linter
+   - **Type check** — run type checker if applicable (tsc, mypy, etc.)
+   - **Build** — run the build command
+   - **Unit tests** — run test suite
+   - **Integration tests** — if available
+   - **Accessibility** — if it's a web UI
+   - **Smoke tests** — manual verification of key flows
+4. Create a QA report in `agentic/workflow/qa/` named `QA-NNN-<slug>.md`
+5. Document results honestly — failures are valuable information
+6. Report findings to the user
+
+## When Checks Fail
+
+- Document the failure in the QA report
+- Assess severity (critical / high / medium / low)
+- Fix critical and high issues before declaring done
+- Medium and low issues can be noted for follow-up
+
+## Project Mode Influence
+
+| Mode | QA Strictness |
+|------|--------------|
+| New | Core checks (lint, build, basic tests) |
+| Active | Standard (lint, types, build, unit tests) |
+| Mature | Full suite including regression awareness |
+| Legacy | Full suite plus extra caution on existing behavior |
