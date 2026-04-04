@@ -1,17 +1,17 @@
 # Cursor Agentic Toolkit
 
-Portable toolkit source for structured Cursor-agent workflows.
+A lightweight way to run Cursor agents like a **small, disciplined engineering team**—with clear intent, traceable decisions, and real QA—without giving up control.
 
 ## What This Is
 
-This repository is the **toolkit source**:
+If you ship software with Cursor, this toolkit helps you:
 
-- reusable templates
-- reusable rules
-- reusable guides
-- bootstrap and upgrade instructions
+- **Turn vague asks into reliable delivery** — intent → brief → spec → tasks → implementation → QA, so agents don’t skip the thinking steps.
+- **Keep context where agents can use it** — curated summaries and policies so every session starts from the same ground truth.
+- **Keep product repos clean** — install a runtime layer in your project and keep specs, task packs, and client materials in external operational memory when you want git hygiene.
+- **Stay human-in-the-loop** — approval gates, governance defaults, and a human-task lane for work only a person can do.
 
-It defines the system.
+This repository is the **toolkit source**: templates, Cursor rules, guides, and an installer script you copy into any project. It defines the system; your project repo runs it day to day.
 
 ## What This Is Not
 
