@@ -11,6 +11,7 @@
 | Author          |       |
 | Date            |       |
 | Status          | proposed / accepted / rejected / superseded |
+| Ops Memory Path | `project-ops/...` |
 
 ## Context
 

@@ -2,7 +2,9 @@
 
 ## What Is It?
 
-The context system is a curated collection of documents that give agents (and humans) the information needed to make good decisions. It lives in `agentic/context/` and is indexed in `agentic/index/`. Context is part of the toolkit — it stays separate from your project repo in `projects/`.
+The context system is a curated collection of documents that gives agents (and humans) reliable project understanding before code changes begin.
+
+In the layered model, context is usually stored in **Project Operational Memory** (`project-ops/context/` or equivalent) and summarized in runtime `.agentic/context/` (or your custom runtime folder).
 
 ## Why Does It Exist?
 
@@ -19,26 +21,47 @@ The context system prevents this by making project knowledge explicit, discovera
 
 | File | Purpose |
 |------|---------|
-| `context/business-context.md` | Business goals, user needs, market constraints |
-| `context/client-input.md` | Client specifications, feedback, preferences |
-| `context/technical-context.md` | Architecture decisions, stack info, project mode, active project |
-| `context/constraints.md` | Deadlines, budgets, regulations, hard limits |
-| `context/package-policy.md` | Allowed/discouraged dependencies, rules for new packages |
-| `context/governance.md` | Git policy, security rules, agent permissions, approval gates |
+| `.agentic/context/business-context.md` | Runtime summary of business goals/needs |
+| `.agentic/context/client-input.md` | Runtime summary of client requirements |
+| `.agentic/context/technical-context.md` | Runtime summary of stack, architecture, mode |
+| `.agentic/context/constraints.md` | Runtime summary of hard constraints |
+| `.agentic/context/package-policy.md` | Runtime dependency policy |
+| `.agentic/context/governance.md` | Runtime git/security/permissions policy |
+
+### External Context Sources
+
+Some context may come from outside `.agentic/context/`:
+
+- architecture docs in external docs repos
+- client requirement docs (shared drives, Notion exports, PDFs)
+- compliance/legal references
+- vendor/platform constraints
+
+When external sources are used:
+
+1. add them to the context index
+2. summarize them in local context files
+3. record last validation date and owner
+
+## Source-of-Truth Separation
+
+Runtime context files are summaries for fast agent execution.
+
+Detailed artifacts should live in external project operational memory (`project-ops/...`), then be summarized in `.agentic/context/...`.
 
 ## Context Index
 
-`index/context-index.md` is a catalog of all context sources. It lists:
+`.agentic/index/context-index.md` is a catalog of context sources. It lists:
 
 - What each context file contains
 - When it was last updated
 - What is still missing or incomplete
 
-Agents should read the context index first to understand what's available.
+Agents should read the context index first to understand what is local vs external.
 
 ## Repo Map
 
-`index/repo-map.md` provides an overview of the repository structure:
+`.agentic/index/repo-map.md` provides an overview of runtime structure and linked external sources:
 
 - Key directories and their purposes
 - Important modules
@@ -53,10 +76,10 @@ This helps agents navigate unfamiliar codebases.
 
 Agents must:
 
-1. Read `index/context-index.md` to see what context exists
+1. Read `.agentic/index/context-index.md` to see what context exists
 2. Read relevant context files based on the task
-3. Check `context/package-policy.md` before introducing dependencies
-4. Note any missing context and flag it
+3. Check `.agentic/context/package-policy.md` before introducing dependencies
+4. Note missing, conflicting, or stale context and flag it
 
 ### After Implementation
 
@@ -65,19 +88,20 @@ Agents should:
 1. Update context files if new decisions were made
 2. Update the context index if new context was added
 3. Update the repo map if structure changed
-4. Flag any newly discovered gaps
+4. Flag newly discovered gaps and external-source drift
 
 ## Context Health
 
-The context health system (`health/context-health-report.md`) periodically assesses:
+The context health system (`.agentic/health/context-health-report.md`) periodically assesses:
 
 - Missing documentation
 - Outdated decisions
 - Conflicting constraints
 - Unclear architecture direction
 - Drift between code and documentation
+- External-source validity (reachable, current, still authoritative)
 
-See `health/context-health-report.md` for the full assessment format.
+See `.agentic/health/context-health-report.md` for the full assessment format.
 
 ## Keeping Context Fresh
 
@@ -92,9 +116,10 @@ Context becomes stale. To prevent this:
 
 If the standard context files don't cover something important:
 
-1. Create a new `.md` file in `agentic/context/`
-2. Add an entry to `index/context-index.md`
-3. Update this document if the new source represents a new category
+1. Add or create a local `.md` file in `.agentic/context/` when possible
+2. Add source metadata to `.agentic/index/context-index.md`
+3. If external-only, include source URL/path, owner, and last validated date
+4. Update this guide if a new source category is introduced
 
 ---
 

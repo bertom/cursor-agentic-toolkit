@@ -67,6 +67,28 @@ Areas where the codebase has diverged from what documentation describes.
 |------|-------------------|-----------|----------|
 |      |                   |           |          |
 
+## External Source Validation
+
+Validate context that comes from outside local `.agentic/context/`.
+
+| Source | Last Validated | Owner | Reachable | Still Authoritative | Notes |
+|--------|----------------|-------|-----------|---------------------|-------|
+|        |                |       | yes / no  | yes / no            |       |
+
+### Runtime vs External Consistency
+
+Check whether runtime summaries in `.agentic` still match external details in `project-ops`.
+
+| Area | Runtime (`.agentic`) | External (`project-ops`) | Consistent | Notes |
+|------|----------------------|--------------------------|------------|-------|
+|      |                      |                          | yes / no   |       |
+
+### External Drift Risks
+
+- [ ] External source moved or unavailable
+- [ ] External source outdated
+- [ ] External source conflicts with local context
+
 ## Architecture Clarity
 
 | Question | Answer |

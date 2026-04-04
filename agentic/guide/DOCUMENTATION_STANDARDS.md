@@ -8,16 +8,24 @@ The toolkit itself carries a version number using [Semantic Versioning](https://
 
 | Field | Value |
 |-------|-------|
-| Current Version | **0.1.0** |
+| Current Version | **0.2.0** |
 | Version Location | `agentic/guide/SYSTEM_OVERVIEW.md` (header) |
 
 | Change Type | Version Bump | Example |
 |-------------|-------------|---------|
 | Breaking structure changes (folder renames, removed capabilities) | Major | 0.x → 1.0 |
 | New capabilities, templates, or rules | Minor | 0.1 → 0.2 |
-| Fixes, clarifications, typo corrections | Patch | 0.1.0 → 0.1.1 |
+| Fixes, clarifications, typo corrections | Patch | 0.2.0 → 0.2.1 |
 
 When the toolkit structure or rules change, update the version in `SYSTEM_OVERVIEW.md`.
+
+## Layer Placement Rules
+
+| Content Type | Layer | Location |
+|--------------|-------|----------|
+| Reusable templates/rules/guides | Toolkit Source | `agentic/` in this repository |
+| Product code and tests | Project Runtime | `my-project/` |
+| Context, briefs, specs, tasks, QA, human tasks | Project Operational Memory | external `project-ops/` (usually via runtime symlink) |
 
 ## Document Metadata
 
@@ -34,12 +42,12 @@ Every document that contains project-specific content (not templates) should inc
 
 | File Type | Needs Metadata | Reason |
 |-----------|---------------|--------|
-| Context files (`context/*.md`) | Yes | Content changes with the project |
-| Workflow artifacts (`workflow/briefs/*.md`, etc.) | Yes | Created per feature |
-| Index files (`index/*.md`) | Yes | Updated as project evolves |
+| Context files (`.agentic/context/*.md`) | Yes | Content changes with the project |
+| Workflow artifacts (`.agentic/workflow/briefs/*.md`, etc.) | Yes | Created per feature |
+| Index files (`.agentic/index/*.md`) | Yes | Updated as project evolves |
 | Health reports (`health/*.md`) | Yes | Regenerated periodically |
 | Guide files (`guide/*.md`) | Yes | Updated when toolkit evolves |
-| Templates (`workflow/templates/*.md`) | No | Static unless toolkit version changes |
+| Templates (`.agentic/workflow/templates/*.md`) | No | Static unless toolkit version changes |
 | Cursor rules (`.cursor/rules/*.mdc`) | No | Static unless toolkit version changes |
 
 ## Document Versioning
@@ -161,4 +169,4 @@ Decision notes must be findable from the artifacts they affect:
 ---
 
 *This document is maintained by the Agentic Toolkit. Update it when documentation practices change.*
-*Toolkit version: 0.1.0*
+*Toolkit version: 0.2.0*

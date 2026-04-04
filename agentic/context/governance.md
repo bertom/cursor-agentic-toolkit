@@ -95,7 +95,7 @@ Defines what agents are and aren't allowed to do beyond code changes.
 ### Allowed by Default
 
 - Read any file in the workspace
-- Create and edit files in `projects/<project-name>/`
+- Create and edit files in the active project runtime repository
 - Create and edit toolkit artifacts in `agentic/`
 - Run build, test, and lint commands
 - Commit changes (per git policy above)

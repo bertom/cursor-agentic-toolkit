@@ -12,9 +12,6 @@ Thumbs.db
 # Cursor
 .specstory/
 
-# Project repos (independent git repos, not part of toolkit)
-projects/
-
 # Dependencies
 node_modules/
 vendor/

@@ -18,19 +18,36 @@ Yes. The toolkit is framework-agnostic and works with new, active, mature, and l
 
 No. It complements them. The toolkit focuses on the agent-assisted development workflow. It does not replace issue trackers, CI/CD pipelines, or project boards.
 
-### Why does the toolkit wrap my project instead of living inside it?
+### Why does the toolkit use a layered model?
 
-To keep your project repo clean. The toolkit never adds files to your project's git history. This also means it works with existing repos without modification — just clone into `projects/` and go.
+To separate reusable toolkit source from project code and project memory:
+
+- runtime repo stays clean
+- operational docs remain project-specific
+- toolkit remains reusable across many projects
+
+### What is `project-ops`?
+
+`project-ops` is the external operational memory layer for one project. It stores detailed project-specific materials (specs, tasks, QA, client input, research, release notes). Runtime can link it as a symlink.
 
 ## Structure
 
-### Where does my project go?
+### Where does my project code go?
 
-Inside the `projects/` folder. Clone an existing repo there, or create a new one. The `projects/` folder is gitignored — your project repos stay fully independent.
+In your independent project repository (for example `my-project/`).
+
+### Where do context and work items go?
+
+Use split ownership:
+
+- runtime summaries in `.agentic/`
+- detailed operational artifacts in external `project-ops/...`
 
 ### Do I need to open my project folder or the toolkit folder in Cursor?
 
-Open the **toolkit folder** (`cursor-agentic-toolkit/`) as the workspace. This gives agents access to both the toolkit and your project in `projects/`.
+Open the **project runtime folder** in Cursor for daily work.
+
+Open toolkit source only when improving toolkit templates/rules/docs.
 
 ## Workflow
 
@@ -66,7 +83,7 @@ One agent per chat session, but not necessarily one agent for the whole feature.
 
 ### What if the agent ignores the rules?
 
-Re-prompt with explicit instructions. Reference specific rules. The Cursor rules should handle this automatically, but if an agent drifts, pointing it back to `agentic/rules/agent-behavior.md` corrects it.
+Re-prompt with explicit instructions. Reference specific rules. The Cursor rules should handle this automatically, but if an agent drifts, pointing it back to `.agentic/rules/agent-behavior.md` corrects it.
 
 ### Can agents update the toolkit itself?
 
@@ -76,7 +93,7 @@ Yes. Agents should update context, repo maps, and documentation as part of their
 
 ### Will the agent push my code?
 
-No, not by default. The governance policy (`agentic/context/governance.md`) allows agents to commit with descriptive messages but never push. You can change this if you want.
+No, not by default. The governance policy (`.agentic/context/governance.md`) allows agents to commit with descriptive messages but never push. You can change this if you want.
 
 ### Can I stop agents from touching git entirely?
 
@@ -118,7 +135,7 @@ If the task no longer requires human action (e.g., an API was set up and the age
 
 ### How do I know if the toolkit is healthy?
 
-Check `agentic/health/context-health-report.md`. It shows what's missing, outdated, or conflicting. A healthy project has few open items.
+Check `.agentic/health/context-health-report.md`. It shows what's missing, outdated, or conflicting. A healthy project has few open items.
 
 ### What triggers documentation updates?
 

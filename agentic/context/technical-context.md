@@ -7,10 +7,12 @@
 | Field | Value |
 |-------|-------|
 | Project name | |
-| Project path | `projects/` |
+| Runtime root | `my-project/` |
+| Runtime layer | `.agentic/` |
+| Ops symlink | `project-ops -> /external/project-memory/my-project` |
 | Repository URL | |
 
-> Agents use this to know where code changes should go. Update when switching projects.
+> Agents use this to locate runtime code (`my-project/...`) and operational memory (`project-ops/...`). Update when switching projects.
 
 ## Project Mode
 

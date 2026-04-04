@@ -11,6 +11,7 @@
 | Author          |       |
 | Date            |       |
 | Status          | draft / approved / superseded |
+| Ops Memory Path | `project-ops/...` |
 
 ## Summary
 

@@ -22,6 +22,17 @@ What information or confirmation should be provided back after completion.
 
 - 
 
+## Return Location
+
+Where should the human place return evidence/results?
+
+- File path in completed lane: `.agentic/human-tasks/completed/<task-file>.md`
+- Optional external locations:
+  - `project-ops/client-input/...`
+  - `project-ops/specs/...`
+  - `project-ops/qa/...`
+- Optional evidence links (screenshots/docs/IDs): 
+
 ## Validation Criteria
 
 How to verify the task was completed correctly.

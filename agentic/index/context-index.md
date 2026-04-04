@@ -1,6 +1,9 @@
 # Context Index
 
-> Catalog of all context sources in the Agentic Toolkit. Agents should read this first to understand what project context is available.
+> Catalog of all context sources. Agents should read this first to understand local and external context.
+
+In layered mode, this file usually lives in project operational memory:
+`.agentic/index/context-index.md` (with linked external source references, often via `project-ops/`)
 
 ## Context Files
 
@@ -12,6 +15,7 @@
 | [constraints.md](../context/constraints.md) | Hard limits, regulations, performance targets | empty | — |
 | [package-policy.md](../context/package-policy.md) | Dependency rules and preferences | template | — |
 | [governance.md](../context/governance.md) | Git policy, security, agent permissions, approval gates | current | 2026-04-04 |
+| [context-source-registry-template.md](../context/context-source-registry-template.md) | Template for tracking local/external context sources | template | — |
 
 ### Status Key
 
@@ -32,15 +36,23 @@
 
 ## Workflow Templates
 
-Templates live in `agentic/workflow/templates/`. Artifacts go into their respective subfolders.
+In runtime usage, templates live in `.agentic/workflow/templates/` and detailed artifacts are typically tracked in `project-ops/workflow/...`.
+
+## External Context Sources
+
+Record external sources used by the project (if any):
+
+| Source | Type | Owner | Last Validated | Status |
+|--------|------|-------|----------------|--------|
+|        |      |       |                |        |
 
 | Template | Artifacts Folder | Purpose |
 |----------|-----------------|---------|
-| [feature-brief-template.md](../workflow/templates/feature-brief-template.md) | `workflow/briefs/` | Captures intent and scope |
-| [spec-template.md](../workflow/templates/spec-template.md) | `workflow/specs/` | Technical design |
-| [decision-note-template.md](../workflow/templates/decision-note-template.md) | `workflow/decisions/` | Records important decisions |
-| [task-pack-template.md](../workflow/templates/task-pack-template.md) | `workflow/tasks/` | Implementation task breakdown |
-| [qa-report-template.md](../workflow/templates/qa-report-template.md) | `workflow/qa/` | Quality validation results |
+| [feature-brief-template.md](../workflow/templates/feature-brief-template.md) | `.agentic/workflow/briefs/` | Captures intent and scope |
+| [spec-template.md](../workflow/templates/spec-template.md) | `.agentic/workflow/specs/` | Technical design |
+| [decision-note-template.md](../workflow/templates/decision-note-template.md) | `.agentic/workflow/decisions/` | Records important decisions |
+| [task-pack-template.md](../workflow/templates/task-pack-template.md) | `.agentic/workflow/tasks/` | Implementation task breakdown |
+| [qa-report-template.md](../workflow/templates/qa-report-template.md) | `.agentic/workflow/qa/` | Quality validation results |
 
 ## Known Gaps
 

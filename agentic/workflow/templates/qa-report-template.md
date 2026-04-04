@@ -12,6 +12,7 @@
 | Author          |       |
 | Date            |       |
 | Overall Status  | pass / fail / partial |
+| Ops Memory Path | `project-ops/...` |
 
 ## Checks Performed
 

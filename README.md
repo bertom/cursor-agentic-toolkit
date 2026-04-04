@@ -1,84 +1,107 @@
 # Cursor Agentic Toolkit
 
-A self-documenting workflow layer for AI-assisted software development.
+Portable toolkit source for structured Cursor-agent workflows.
 
-## What Is This?
+## What This Is
 
-A lightweight, production-grade system that structures how Cursor agents help you build software. It moves work from intent to validated delivery through a clear chain, while keeping you in full control.
+This repository is the **toolkit source**:
 
-**This is not an autonomous swarm.** Human oversight is always required.
+- reusable templates
+- reusable rules
+- reusable guides
+- bootstrap and upgrade instructions
 
-## Quick Start
+It defines the system.
 
-See [`agentic/guide/QUICKSTART.md`](agentic/guide/QUICKSTART.md).
+## What This Is Not
 
-## How It Works
+This repository is **not**:
+
+- a master workspace for active projects
+- a place to store real project specs/tasks/QA
+- a place to store project business context or client materials
+
+Daily development happens in independent project repositories, not here.
+
+## Correct Layered Model
+
+1. **Toolkit Source** (this repo)
+2. **Project Runtime** (independent project repo, where Cursor is opened daily)
+3. **Project Operational Memory** (external folder with project-specific operational artifacts)
+
+In a real project, runtime typically looks like:
 
 ```
-Intent → Feature Brief → Spec → Decision Note (optional)
-      → Task Pack → Implementation → QA Report → Documentation Update
+my-project/
+  .agentic/
+  project-ops/   -> symlink to external project memory
+  src/
+  package.json
 ```
 
-Each step has a template. Agents follow rules. Context is curated. Decisions are documented. QA is mandatory.
+Folder names are configurable. `.agentic` and `project-ops` are recommended defaults, not hard requirements.
 
-## Structure
+## Why This Separation
 
+- keeps project git history clean
+- keeps toolkit reusable across many projects
+- keeps project memory outside product repo when desired
+- supports external memory stores without complicating agent paths
+
+## Recommended External Setup
+
+Use the toolkit to install `.agentic/` into an existing project repository, then optionally symlink `project-ops/` to external memory.
+
+Scripted install:
+
+```bash
+./scripts/install-runtime.sh \
+  --project-root "/path/to/my-project" \
+  --runtime-dir ".agentic" \
+  --ops-link-name "project-ops" \
+  --ops-target "/external/project-memory/my-project" \
+  --profile full
 ```
-cursor-agentic-toolkit/
-├── agentic/               Toolkit core
-│   ├── context/           Project context (business, technical, governance)
-│   ├── workflow/          Templates and artifacts (briefs, specs, tasks, QA)
-│   ├── human-tasks/       Tasks requiring human action
-│   ├── guide/             Toolkit documentation
-│   ├── health/            Context health reports
-│   ├── index/             Context index and repo map
-│   └── rules/             Agent behavior rules
-├── projects/              Your project repo (gitignored, independent)
-│   └── my-project/        ← clone or create your project here
-├── .cursor/rules/         Cursor rules (auto-loaded by agents)
-└── README.md
+
+By default, installer applies recommended git hygiene in the project repo:
+
+- ignores runtime dir (for example `.agentic/`)
+- ignores ops link name (for example `project-ops`)
+
+Opt out:
+
+```bash
+./scripts/install-runtime.sh --project-root "/path/to/my-project" --gitignore-mode none
 ```
 
-## Key Concept: Toolkit Wraps Projects
+Preview only (no file writes):
 
-The toolkit is a **wrapper**, not something that lives inside your project. Your project repository goes inside `projects/` and stays completely independent — it keeps its own `.git`, its own structure, its own everything. The toolkit never touches your project files.
+```bash
+./scripts/install-runtime.sh --project-root "/path/to/my-project" --profile full --dry-run
+```
 
-This means:
-- **Existing repos** — clone them into `projects/` and start using the toolkit immediately
-- **New repos** — create them in `projects/` from scratch
-- **Clean separation** — the `projects/` folder is gitignored, so your project repo is never committed to the toolkit
+See:
 
-## Working with Agents
-
-Agents automatically pick up the toolkit through Cursor rules in `.cursor/rules/`. You just describe your intent in chat — the agent reads context, follows the workflow, and keeps you in control at every gate.
-
-No manual prompting required. No templates to copy by hand.
-
-## Core Principles
-
-| Principle | Meaning |
-|-----------|---------|
-| Human-controlled | Agents assist, humans decide |
-| Context-first | Read context before coding |
-| Explicit decisions | Document important choices |
-| QA is mandatory | Validate before declaring done |
-| Small scope | Avoid large uncontrolled changes |
-| Explainability | The system explains itself |
-| Reusable | Works with any repository |
+- [`agentic/guide/EXTERNAL_SETUP.md`](agentic/guide/EXTERNAL_SETUP.md)
+- [`agentic/guide/ARCHITECTURE_LAYERS.md`](agentic/guide/ARCHITECTURE_LAYERS.md)
+- [`agentic/guide/QUICKSTART.md`](agentic/guide/QUICKSTART.md)
 
 ## Documentation
 
 | Document | Purpose |
 |----------|---------|
-| [System Overview](agentic/guide/SYSTEM_OVERVIEW.md) | What the toolkit is and why |
-| [Quickstart](agentic/guide/QUICKSTART.md) | Get started in 5 minutes |
-| [Workflow Explained](agentic/guide/WORKFLOW_EXPLAINED.md) | The workflow chain in detail |
-| [Context System](agentic/guide/CONTEXT_SYSTEM.md) | How context works |
-| [Human Tasks](agentic/guide/HUMAN_TASKS.md) | Human handoff workflow |
-| [FAQ](agentic/guide/FAQ.md) | Common questions |
-| [Glossary](agentic/guide/GLOSSARY.md) | Terminology |
-| [Documentation Standards](agentic/guide/DOCUMENTATION_STANDARDS.md) | Versioning, traceability, writing rules |
+| [SYSTEM_OVERVIEW.md](agentic/guide/SYSTEM_OVERVIEW.md) | What the toolkit is and why |
+| [ARCHITECTURE_LAYERS.md](agentic/guide/ARCHITECTURE_LAYERS.md) | Layer model and placement |
+| [EXTERNAL_SETUP.md](agentic/guide/EXTERNAL_SETUP.md) | Install into independent project repo |
+| [BOOTSTRAP.md](agentic/guide/BOOTSTRAP.md) | Bootstrap runtime in opened project repo |
+| [RUNTIME_PROFILES.md](agentic/guide/RUNTIME_PROFILES.md) | Minimal vs full runtime profiles |
+| [UPGRADE_RUNTIME.md](agentic/guide/UPGRADE_RUNTIME.md) | Upgrade runtime from toolkit source |
+| [END_TO_END_EXAMPLE.md](agentic/guide/END_TO_END_EXAMPLE.md) | Full setup example with external memory |
+| [CONTEXT_SYSTEM.md](agentic/guide/CONTEXT_SYSTEM.md) | Context model + external sources |
+| [WORKFLOW_EXPLAINED.md](agentic/guide/WORKFLOW_EXPLAINED.md) | Workflow chain and traceability |
+| [HUMAN_TASKS.md](agentic/guide/HUMAN_TASKS.md) | Human handoff and return locations |
+| [DOCUMENTATION_STANDARDS.md](agentic/guide/DOCUMENTATION_STANDARDS.md) | Versioning and traceability |
 
 ## License
 
-This toolkit is provided as-is for use in your projects.
+Provided as-is for use in your projects.

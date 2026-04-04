@@ -6,42 +6,48 @@ alwaysApply: true
 
 # Agentic Toolkit — Agent Instructions
 
-You are working inside the **Agentic Toolkit** workspace. This workspace structures AI-assisted development with human oversight.
+You are working with the Agentic Toolkit. Distinguish toolkit source from project runtime.
 
 ## Workspace Layout
 
 ```
-cursor-agentic-toolkit/          ← workspace root
-├── agentic/                     ← toolkit (context, templates, rules, docs)
-├── projects/                    ← project repos (independent git repos)
-│   └── <project-name>/
-└── .cursor/rules/               ← you are reading this
+Toolkit source repo:
+cursor-agentic-toolkit/
+  agentic/
+  .cursor/rules/
+
+Project runtime (daily use):
+my-project/
+  .agentic/
+  project-ops/ -> /external/project-memory/my-project
+  src/
 ```
 
-- **Toolkit files** live in `agentic/`. Never move them into a project.
-- **Code changes** go in `projects/<project-name>/`.
-- The `projects/` folder is gitignored. Each project has its own `.git`.
+- **Toolkit source files** live in `agentic/`.
+- **Runtime files** live in project `.agentic/` after installation/bootstrap.
+- If in toolkit source repo: update reusable templates/rules/docs only.
+- If in project runtime repo: code changes go in runtime code folders; workflow/context use `.agentic/` and `project-ops/`.
 
 ## Before Starting Any Task
 
-1. Read `agentic/index/context-index.md` to see what context is available
-2. Read relevant files in `agentic/context/` for the current task
-3. If the task involves dependencies, check `agentic/context/package-policy.md`
-4. For full rules, read `agentic/rules/agent-behavior.md`
+1. If in toolkit source: read `agentic/index/context-index.md`
+2. If in runtime: read `.agentic/index/context-index.md`
+3. For dependency tasks, check the applicable `package-policy.md`
+4. For full rules, read `agentic/rules/agent-behavior.md` (source) or runtime equivalent
 
 ## Core Rules (Summary)
 
 - **Context first** — read context before coding
 - **Small changes** — avoid touching more than 5-10 files without approval
-- **No silent decisions** — document non-trivial choices as decision notes in `agentic/workflow/`
+- **No silent decisions** — document non-trivial choices as decision notes in runtime workflow paths
 - **Package policy** — check before adding any dependency
-- **Human tasks** — when blocked by something requiring human access, create a task in `agentic/human-tasks/pending/`
+- **Human tasks** — when blocked by human-only action, create a task in runtime human-task lane
 - **QA is mandatory** — produce a QA report after completing a task pack
 - **Update context** — after meaningful changes, update repo map, context index, or context files as needed
 
 ## Git and Security
 
-Read `agentic/context/governance.md` for full policy. Defaults:
+Read the applicable governance file (`agentic/context/governance.md` in source or `.agentic/context/governance.md` in runtime). Defaults:
 
 - **Commit:** Allowed — use descriptive messages explaining what and why
 - **Push:** NOT allowed — never push unless governance explicitly permits it
@@ -53,7 +59,8 @@ Read `agentic/context/governance.md` for full policy. Defaults:
 For non-trivial work, follow:
 Intent → Feature Brief → Spec → Decision Note (if needed) → Task Pack → Implementation → QA Report → Doc Update
 
-Templates are in `agentic/workflow/templates/`. Artifacts go into the appropriate subfolder (`briefs/`, `specs/`, `decisions/`, `tasks/`, `qa/`), not inside the project repo.
+Templates are in `agentic/workflow/templates/` (source) and runtime `.agentic/workflow/templates/` (installed). Artifacts go to runtime and external ops paths (`.agentic/workflow/...`, `project-ops/...`) based on project policy.
+In runtime usage, these paths map to `.agentic/workflow/...` and may reference `project-ops/...` for full operational records.
 
 ## When the User Describes Intent
 
@@ -66,6 +73,8 @@ If the user describes what they want to build or change:
 
 ## Active Project
 
-Check `agentic/context/technical-context.md` for:
-- **Active project path** — where code changes go (e.g., `projects/my-app/`)
+Check runtime technical context for:
+- **Runtime root** — where code changes go
+- **Runtime layer** — `.agentic/`
+- **Ops link** — `project-ops` symlink target
 - **Project mode** (new/active/mature/legacy) — adjust strictness accordingly

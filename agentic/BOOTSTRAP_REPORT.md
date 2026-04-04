@@ -1,132 +1,41 @@
 # Bootstrap Report
 
-> Generated after toolkit installation. Verifies all required components are in place.
+> Toolkit-source bootstrap reference.  
+> Runtime bootstrap should be performed in an independent project repo using [EXTERNAL_SETUP.md](guide/EXTERNAL_SETUP.md).
 
-## Installation Summary
+## Purpose
 
-| Field | Value |
-|-------|-------|
-| Date | 2026-04-04 |
-| Toolkit Version | 0.1.0 |
-| Workspace | cursor-agentic-toolkit |
-| Installer | Cursor Agent |
+This file records what reusable assets exist in toolkit source for bootstrap/install.
 
-## Structure Verification
+## Toolkit Source Assets
 
-### Directories
+- `agentic/context/*` runtime context templates
+- `agentic/workflow/templates/*` workflow templates
+- `agentic/guide/*` user guides
+- `agentic/rules/*` behavior rules
+- `.cursor/rules/*` Cursor rule templates
 
-| Directory | Status |
-|-----------|--------|
-| `agentic/` | created |
-| `agentic/context/` | created |
-| `agentic/workflow/` | created |
-| `agentic/workflow/templates/` | created |
-| `agentic/workflow/briefs/` | created |
-| `agentic/workflow/specs/` | created |
-| `agentic/workflow/decisions/` | created |
-| `agentic/workflow/tasks/` | created |
-| `agentic/workflow/qa/` | created |
-| `agentic/human-tasks/` | created |
-| `agentic/human-tasks/pending/` | created |
-| `agentic/human-tasks/completed/` | created |
-| `agentic/guide/` | created |
-| `agentic/health/` | created |
-| `agentic/index/` | created |
-| `agentic/rules/` | created |
-| `projects/` | created (gitignored) |
-| `.cursor/rules/` | created |
+## Runtime Bootstrap Target
 
-### Context Files
+Bootstrap target is **project runtime repo**, not toolkit source.
 
-| File | Status |
-|------|--------|
-| `context/business-context.md` | created (empty template) |
-| `context/client-input.md` | created (empty template) |
-| `context/technical-context.md` | created (empty template) |
-| `context/constraints.md` | created (empty template) |
-| `context/package-policy.md` | created (template with rules) |
-| `context/governance.md` | created (defaults configured) |
+Expected runtime outputs:
 
-### Workflow Templates
+- `.agentic/` runtime layer
+- runtime context source registry
+- optional `project-ops/` symlink to external memory
 
-| File | Status |
-|------|--------|
-| `workflow/templates/feature-brief-template.md` | created |
-| `workflow/templates/spec-template.md` | created |
-| `workflow/templates/decision-note-template.md` | created |
-| `workflow/templates/task-pack-template.md` | created |
-| `workflow/templates/qa-report-template.md` | created |
+Folder names are configurable; `.agentic` and `project-ops` are recommended defaults.
 
-### Workflow Artifact Folders
+## Authoritative Setup Guide
 
-| Folder | Purpose | Status |
-|--------|---------|--------|
-| `workflow/briefs/` | Feature briefs (FB-NNN) | created |
-| `workflow/specs/` | Specifications (SP-NNN) | created |
-| `workflow/decisions/` | Decision notes (DN-NNN) | created |
-| `workflow/tasks/` | Task packs (TP-NNN) | created |
-| `workflow/qa/` | QA reports (QA-NNN) | created |
+Use:
 
-### Guide Documents
+- `agentic/guide/EXTERNAL_SETUP.md`
+- `agentic/guide/QUICKSTART.md`
+- `agentic/guide/BOOTSTRAP.md`
+- `scripts/install-runtime.sh`
 
-| File | Status |
-|------|--------|
-| `guide/SYSTEM_OVERVIEW.md` | created |
-| `guide/QUICKSTART.md` | created |
-| `guide/WORKFLOW_EXPLAINED.md` | created |
-| `guide/CONTEXT_SYSTEM.md` | created |
-| `guide/HUMAN_TASKS.md` | created |
-| `guide/FAQ.md` | created |
-| `guide/GLOSSARY.md` | created |
+---
 
-### Health System
-
-| File | Status |
-|------|--------|
-| `health/context-health-report.md` | created |
-
-### Index Files
-
-| File | Status |
-|------|--------|
-| `index/context-index.md` | created |
-| `index/repo-map.md` | created |
-
-### Rules
-
-| File | Status |
-|------|--------|
-| `rules/agent-behavior.md` | created (17 rules) |
-
-### Cursor Rules (Auto-loaded)
-
-| File | Status |
-|------|--------|
-| `.cursor/rules/agentic-toolkit.mdc` | created (always-on) |
-| `.cursor/rules/project-setup.mdc` | created |
-| `.cursor/rules/workflow-feature.mdc` | created |
-| `.cursor/rules/human-tasks.mdc` | created |
-| `.cursor/rules/qa-checks.mdc` | created |
-
-### Human Task System
-
-| File | Status |
-|------|--------|
-| `human-tasks/human-task-template.md` | created |
-| `human-tasks/pending/.gitkeep` | created |
-| `human-tasks/completed/.gitkeep` | created |
-
-## Verification Result
-
-**All required components installed successfully.**
-
-## Next Steps
-
-1. Add your project to `projects/` (clone or create)
-2. Fill in `context/technical-context.md` with stack, project mode, and active project path
-3. Fill in `context/business-context.md` with project goals
-4. Review `context/governance.md` defaults (git, security, permissions)
-5. Customize `context/package-policy.md` for your dependencies
-6. Start your first feature
-
-See `guide/QUICKSTART.md` for detailed getting-started instructions.
+*Update this file when bootstrap assets or bootstrap flow change.*

@@ -32,7 +32,7 @@ The chain ensures each concern is addressed before moving forward.
 
 ### 1. Feature Brief
 
-**Template:** `workflow/templates/feature-brief-template.md`
+**Template:** `.agentic/workflow/templates/feature-brief-template.md`
 
 Captures the problem, desired outcome, scope, and success criteria. This is the starting point for any new piece of work.
 
@@ -42,7 +42,7 @@ Captures the problem, desired outcome, scope, and success criteria. This is the 
 
 ### 2. Spec
 
-**Template:** `workflow/templates/spec-template.md`
+**Template:** `.agentic/workflow/templates/spec-template.md`
 
 Translates the feature brief into a concrete technical design. Describes the approach, components affected, data changes, API changes, and dependencies.
 
@@ -57,7 +57,7 @@ Translates the feature brief into a concrete technical design. Describes the app
 
 ### 3. Decision Note (Optional)
 
-**Template:** `workflow/templates/decision-note-template.md`
+**Template:** `.agentic/workflow/templates/decision-note-template.md`
 
 Records important technical or architectural decisions. Documents options considered, the choice made, and consequences.
 
@@ -72,7 +72,7 @@ Records important technical or architectural decisions. Documents options consid
 
 ### 4. Task Pack
 
-**Template:** `workflow/templates/task-pack-template.md`
+**Template:** `.agentic/workflow/templates/task-pack-template.md`
 
 Breaks the spec into small, implementable tasks. Each task should be completable in a single focused session.
 
@@ -101,7 +101,7 @@ The actual coding work. Agents implement tasks from the task pack one at a time.
 
 ### 6. QA Report
 
-**Template:** `workflow/templates/qa-report-template.md`
+**Template:** `.agentic/workflow/templates/qa-report-template.md`
 
 Documents the results of all quality checks. Work is not considered complete until the QA report passes.
 
@@ -123,10 +123,10 @@ Documents the results of all quality checks. Work is not considered complete unt
 
 After completing a task pack, update:
 
-- `index/context-index.md` — if new context was created
-- `index/repo-map.md` — if repository structure changed
-- `context/` files — if constraints or decisions changed
-- `guide/` docs — if the workflow or system evolved
+- `.agentic/index/context-index.md` — if new context was created
+- `.agentic/index/repo-map.md` — if repository structure changed
+- `.agentic/context/` files — if constraints or decisions changed
+- `.agentic/guide/` docs — if the workflow or system evolved
 
 ## Where Artifacts Live
 
@@ -143,6 +143,11 @@ agentic/workflow/
 ```
 
 Agents read from `templates/` and create artifacts in the appropriate subfolder.
+
+In runtime usage:
+
+- templates and summary workflow state may live in `.agentic/workflow/...`
+- full detailed artifacts should live in `project-ops/workflow/...` (external operational memory)
 
 ## Artifact Traceability
 

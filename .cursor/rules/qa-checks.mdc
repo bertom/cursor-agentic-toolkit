@@ -1,7 +1,7 @@
 ---
 description: Rules for running QA checks and producing QA reports
 globs:
-  - agentic/workflow/qa/**
+  - .agentic/workflow/qa/**
 alwaysApply: false
 ---
 
@@ -15,8 +15,8 @@ alwaysApply: false
 
 ## Steps
 
-1. Read `agentic/workflow/templates/qa-report-template.md`
-2. Determine which checks apply to this project (read `agentic/context/technical-context.md` for stack info)
+1. Read `.agentic/workflow/templates/qa-report-template.md`
+2. Determine which checks apply to this project (read `.agentic/context/technical-context.md` for stack info)
 3. Run each applicable check:
    - **Lint** — run the project's linter
    - **Type check** — run type checker if applicable (tsc, mypy, etc.)
@@ -25,7 +25,7 @@ alwaysApply: false
    - **Integration tests** — if available
    - **Accessibility** — if it's a web UI
    - **Smoke tests** — manual verification of key flows
-4. Create a QA report in `agentic/workflow/qa/` named `QA-NNN-<slug>.md`
+4. Create a QA report in `.agentic/workflow/qa/` named `QA-NNN-<slug>.md`
 5. Document results honestly — failures are valuable information
 6. Report findings to the user
 

@@ -12,6 +12,7 @@
 | Author          |       |
 | Date            |       |
 | Status          | draft / in-progress / complete |
+| Ops Memory Path | `project-ops/...` |
 
 ## Prerequisites
 
@@ -80,7 +81,7 @@ What must be true before work begins?
 
 ## Human Tasks
 
-List any tasks that require human action. Create entries in `agentic/human-tasks/pending/` for each.
+List any tasks that require human action. Create entries in `.agentic/human-tasks/pending/` for each.
 
 | Human Task | Reason | Blocks |
 |------------|--------|--------|

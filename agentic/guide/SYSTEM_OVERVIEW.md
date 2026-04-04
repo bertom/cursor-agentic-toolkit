@@ -1,93 +1,84 @@
 # System Overview
 
-**Toolkit Version: 0.1.0**
+**Toolkit Version: 0.2.0**
 
 ## What Is This?
 
-The **Agentic Toolkit** is a lightweight workflow layer that wraps around your project repository. It structures how AI agents (specifically Cursor agents) assist with software development — from capturing intent to delivering validated, documented work.
+The **Agentic Toolkit** is a reusable workflow layer for Cursor-assisted development. It structures work from intent to implementation with explicit documentation and QA gates.
 
-It is **not** an autonomous system. Every meaningful decision requires human approval. Agents assist, research, draft, and validate — but humans remain in control.
+This is **not** an autonomous system. Human approval remains mandatory.
 
-## Architecture: Toolkit Wraps Projects
+## 3-Layer Model
 
-The toolkit sits at the workspace root. Your project repositories live inside `projects/` as independent git repos:
+The toolkit separates concerns into three layers:
 
-```
-cursor-agentic-toolkit/          ← workspace root (open this in Cursor)
-├── agentic/                     ← toolkit files (context, templates, rules, docs)
-├── projects/
-│   └── my-project/              ← your actual repo (its own .git, fully independent)
-├── .cursor/rules/               ← auto-loaded agent rules
-└── README.md
-```
+1. **Toolkit Source**  
+   Reusable source of templates, rules, and guides (this repository).
+2. **Project Runtime**  
+   The actual independent project repository being changed (e.g., `my-project/`).
+3. **Project Operational Memory**  
+   Per-project external context + workflow artifacts (commonly exposed in runtime as `project-ops/` via symlink).
 
-The `projects/` directory is gitignored — your project repos are never committed to the toolkit. This means:
+See [ARCHITECTURE_LAYERS.md](ARCHITECTURE_LAYERS.md) for details.
 
-- Works with **existing repos** (just clone into `projects/`)
-- Works with **new repos** (create in `projects/`)
-- **Never pollutes** your project repo with toolkit files
+## Why It Exists
 
-## Why Does It Exist?
+Without structure, agents can:
 
-AI coding agents are powerful but prone to:
+- lose context
+- skip decision rationale
+- skip validation
+- create hard-to-trace changes
 
-- **Context loss** — making changes without understanding the full picture
-- **Scope creep** — attempting large, uncontrolled refactors
-- **Silent decisions** — choosing libraries or patterns without documenting why
-- **Skipping QA** — delivering code without validation
-- **Orphaned knowledge** — work that isn't documented or traceable
+The toolkit adds a minimal structure to prevent that.
 
-This toolkit solves these problems by providing:
-
-1. A **structured workflow** that moves work from intent to validated delivery
-2. A **curated context system** that agents must read before coding
-3. **Decision documentation** that captures the "why" behind choices
-4. **Mandatory QA gates** that prevent incomplete work
-5. A **human task lane** for work agents cannot perform
-6. **Self-maintaining documentation** that stays current
-7. **Cursor rules** that automatically instruct agents without manual prompting
-
-## How Does It Work?
+## Workflow Chain
 
 ```
 Intent → Feature Brief → Spec → Decision Note (optional)
       → Task Pack → Implementation → QA Report → Documentation Update
 ```
 
-Each step has a template. Artifacts reference each other for traceability. Agents automatically follow rules loaded from `.cursor/rules/`.
+Each step has a template. Artifacts cross-reference each other for traceability.
 
-Before any implementation, agents consult:
+## Context-First Execution
 
-- **Context files** in `agentic/context/` for business, technical, and dependency constraints
-- **Context index** in `agentic/index/` for a map of all available context
-- **Package policy** in `agentic/context/package-policy.md` for dependency decisions
-- **Governance** in `agentic/context/governance.md` for git, security, and permission policies
+Before implementation in a project runtime, agents read:
+
+- `.agentic/index/context-index.md`
+- relevant files in `.agentic/context/`
+- `.agentic/context/package-policy.md`
+- `.agentic/context/governance.md`
+
+In the layered model, `.agentic` acts as runtime summary/control layer while detailed artifacts live in external `project-ops`.
 
 ## Core Principles
 
 | Principle | Meaning |
 |-----------|---------|
 | Human-controlled | Agents assist but do not take over |
-| Context-first | Agents read curated context before implementation |
+| Context-first | Read curated context before implementation |
 | Explicit decisions | Important choices are documented |
 | QA is mandatory | Work is not done without validation |
 | Small scope | Avoid large uncontrolled changes |
 | Explainability | The system explains what it does and why |
-| Maintainable | Simple beats clever |
-| Reusable | Works across different repositories |
+| Reusable | Works across projects |
 
-## Where to Go Next
+## Related Docs
 
 | Document | Purpose |
 |----------|---------|
-| [QUICKSTART.md](QUICKSTART.md) | Get started in 5 minutes |
-| [WORKFLOW_EXPLAINED.md](WORKFLOW_EXPLAINED.md) | Understand the workflow chain |
-| [CONTEXT_SYSTEM.md](CONTEXT_SYSTEM.md) | Learn how context works |
-| [HUMAN_TASKS.md](HUMAN_TASKS.md) | Understand human handoff |
-| [FAQ.md](FAQ.md) | Common questions answered |
-| [GLOSSARY.md](GLOSSARY.md) | Terminology definitions |
-| [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md) | Versioning, traceability, and writing standards |
+| [ARCHITECTURE_LAYERS.md](ARCHITECTURE_LAYERS.md) | Layer model and file placement |
+| [EXTERNAL_SETUP.md](EXTERNAL_SETUP.md) | Install runtime in independent project repo |
+| [BOOTSTRAP.md](BOOTSTRAP.md) | Runtime bootstrap procedure |
+| [RUNTIME_PROFILES.md](RUNTIME_PROFILES.md) | Minimal vs full runtime setup |
+| [UPGRADE_RUNTIME.md](UPGRADE_RUNTIME.md) | Runtime upgrade flow |
+| [QUICKSTART.md](QUICKSTART.md) | Setup and first use |
+| [CONTEXT_SYSTEM.md](CONTEXT_SYSTEM.md) | Context model and external sources |
+| [WORKFLOW_EXPLAINED.md](WORKFLOW_EXPLAINED.md) | Workflow chain details |
+| [HUMAN_TASKS.md](HUMAN_TASKS.md) | Human handoff model |
+| [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md) | Versioning and traceability rules |
 
 ---
 
-*This document is maintained by the Agentic Toolkit. Update it when the system's purpose or structure changes.*
+*This document is maintained by the Agentic Toolkit.*

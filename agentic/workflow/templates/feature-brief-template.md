@@ -12,6 +12,7 @@
 | Date            |       |
 | Project Mode    | new / active / mature / legacy |
 | Status          | draft / approved / superseded |
+| Ops Memory Path | `project-ops/...` |
 
 ## Problem Statement
 

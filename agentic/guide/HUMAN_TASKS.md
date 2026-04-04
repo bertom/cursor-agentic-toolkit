@@ -2,7 +2,7 @@
 
 ## What Are Human Tasks?
 
-Human tasks are actions that cannot be performed by an AI agent and require a human to complete. They are stored as structured documents in `agentic/human-tasks/`.
+Human tasks are actions that cannot be performed by an AI agent and require a human to complete. They are stored as structured documents in `.agentic/human-tasks/`.
 
 ## Why Do They Exist?
 
@@ -22,7 +22,7 @@ When an agent encounters a task it cannot perform, it creates a human task inste
 ## Where Are They Stored?
 
 ```
-agentic/human-tasks/
+.agentic/human-tasks/
   pending/       — tasks waiting for human action
   completed/     — tasks that have been done
 ```
@@ -64,6 +64,17 @@ How to verify the task was completed correctly:
 
 - [ ] 
 
+## Return Location
+
+Where the human should place returned evidence/results:
+
+- `.agentic/human-tasks/completed/<task-file>.md`
+- or project operational memory locations such as:
+  - `project-ops/client-input/...`
+  - `project-ops/specs/...`
+  - `project-ops/qa/...`
+- Attach links, IDs, screenshots, or config values in the completed task file
+
 ## Blocking
 
 Which implementation tasks are blocked until this is complete:
@@ -91,7 +102,7 @@ Which implementation tasks are blocked until this is complete:
 ### Creating a Human Task
 
 1. Agent identifies a task it cannot perform
-2. Agent creates a file in `human-tasks/pending/` using the format above
+2. Agent creates a file in `.agentic/human-tasks/pending/` using the format above
 3. Agent notes the human task in the relevant task pack
 4. Agent continues with non-blocked work
 
@@ -100,13 +111,14 @@ Which implementation tasks are blocked until this is complete:
 1. Human reads the task document
 2. Human follows the steps
 3. Human provides the expected return information (adds it to the document)
-4. Human checks the validation criteria
-5. Human moves the file from `pending/` to `completed/`
-6. Agent can now unblock dependent tasks
+4. Human records return evidence in the return location
+5. Human checks the validation criteria
+6. Human moves the file from `pending/` to `completed/`
+7. Agent can now unblock dependent tasks
 
 ### Reviewing Human Tasks
 
-Periodically check `human-tasks/pending/` for outstanding tasks. They may be blocking implementation work.
+Periodically check `.agentic/human-tasks/pending/` for outstanding tasks. They may be blocking implementation work.
 
 ## Examples of Common Human Tasks
 

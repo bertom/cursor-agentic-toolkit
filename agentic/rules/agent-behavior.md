@@ -4,25 +4,30 @@
 
 ## Workspace Structure
 
-This workspace uses a wrapper pattern. The toolkit is at the root, project repos live in `projects/`:
+Use the 3-layer model:
+
+- Toolkit Source: this repository (`cursor-agentic-toolkit/`)
+- Project Runtime: independent project repo (e.g., `my-project/`)
+- Project Operational Memory: external folder linked as `my-project/project-ops`
+
+Runtime shape:
 
 ```
-cursor-agentic-toolkit/          ← workspace root
-├── agentic/                     ← toolkit (context, templates, rules, docs)
-├── projects/
-│   └── <project-name>/          ← the actual project repo
-└── .cursor/rules/               ← auto-loaded rules
+my-project/
+├── .agentic/
+├── project-ops -> /external/project-memory/my-project
+└── src/
 ```
 
-Code changes go in `projects/<project-name>/`. Toolkit files stay in `agentic/`.
+Code changes go in runtime code folders (`src/`, `app/`, etc.). Context summaries live in `.agentic/`; full operational artifacts live in `project-ops/`.
 
 ## Rule 1: Read Context Before Coding
 
 Before making any code changes:
 
-1. Read `agentic/index/context-index.md` to understand what context exists
-2. Read relevant context files in `agentic/context/` based on the task
-3. Check `agentic/context/package-policy.md` if the task involves dependencies
+1. Read `.agentic/index/context-index.md` to understand what context exists
+2. Read relevant context files in `.agentic/context/` based on the task
+3. Check `.agentic/context/package-policy.md` if the task involves dependencies
 4. Review any referenced decision notes
 
 **Never assume context. Always verify.**
@@ -51,7 +56,7 @@ Before performing any of the following, create a decision note and get human app
 
 Before introducing any new dependency:
 
-1. Read `agentic/context/package-policy.md`
+1. Read `.agentic/context/package-policy.md`
 2. Check if a preferred package already covers the need
 3. Verify the package is not on the discouraged list
 4. If the package is significant, create a decision note
@@ -62,8 +67,8 @@ Before introducing any new dependency:
 
 If a task requires action you cannot perform (dashboard login, API key generation, DNS setup, etc.):
 
-1. Create a human task file in `agentic/human-tasks/pending/`
-2. Use the template from `agentic/human-tasks/human-task-template.md`
+1. Create a human task file in `.agentic/human-tasks/pending/`
+2. Use the template from `.agentic/human-tasks/human-task-template.md`
 3. Include clear steps, expected return information, and validation criteria
 4. Note the blocking relationship in the task pack
 5. Continue with non-blocked work
@@ -74,7 +79,7 @@ If a task requires action you cannot perform (dashboard login, API key generatio
 
 When you make a non-trivial technical decision:
 
-1. Create a decision note using `agentic/workflow/templates/decision-note-template.md`
+1. Create a decision note using `.agentic/workflow/templates/decision-note-template.md`
 2. Document the options you considered
 3. Explain why you chose this approach
 4. Note the consequences
@@ -93,7 +98,7 @@ Decisions that require documentation:
 After completing a task pack:
 
 1. Run all applicable quality checks (lint, type check, build, tests)
-2. Create a QA report using `agentic/workflow/templates/qa-report-template.md`
+2. Create a QA report using `.agentic/workflow/templates/qa-report-template.md`
 3. Document what was tested and the results
 4. Flag any issues found
 
@@ -103,8 +108,8 @@ After completing a task pack:
 
 After completing meaningful work:
 
-1. Update `agentic/index/repo-map.md` if the repository structure changed
-2. Update `agentic/index/context-index.md` if new context was created
+1. Update `.agentic/index/repo-map.md` if the repository structure changed
+2. Update `.agentic/index/context-index.md` if new context was created
 3. Update relevant context files if decisions or constraints changed
 4. Update guide documents if the workflow or toolkit structure changed
 
@@ -122,13 +127,13 @@ When writing or updating documentation:
 - Include metadata footers on project-specific documents (last updated, updated by)
 - Reference decision notes or task packs that prompted the change
 
-See `agentic/guide/DOCUMENTATION_STANDARDS.md` for full standards including versioning and traceability.
+See `.agentic/guide/DOCUMENTATION_STANDARDS.md` for full standards including versioning and traceability.
 
 **If documentation is unclear, it's incomplete.**
 
 ## Rule 10: Respect Project Mode
 
-Check `agentic/context/technical-context.md` for the current project mode and adjust behavior:
+Check `.agentic/context/technical-context.md` for the current project mode and adjust behavior:
 
 | Mode | Behavior |
 |------|----------|
@@ -147,7 +152,7 @@ For non-trivial work, follow the workflow:
 4. Task Pack → captures implementation plan
 5. QA Report → captures validation
 
-Skip steps only for trivial changes (typos, formatting). See `agentic/guide/WORKFLOW_EXPLAINED.md` for guidance.
+Skip steps only for trivial changes (typos, formatting). See `.agentic/guide/WORKFLOW_EXPLAINED.md` for guidance.
 
 ## Rule 12: Ensure Traceability
 
@@ -162,7 +167,7 @@ Every artifact should reference its related artifacts:
 
 ## Rule 13: Follow Git Policy
 
-Before performing any git operation, read `agentic/context/governance.md` for the current settings.
+Before performing any git operation, read `.agentic/context/governance.md` for the current settings.
 
 **Default behavior:**
 
@@ -199,11 +204,11 @@ Before performing any git operation, read `agentic/context/governance.md` for th
 - [ ] No `.env` files in staged changes
 - [ ] No PII or real user data in staged changes
 
-Read `agentic/context/governance.md` for the full security policy and sensitive file patterns.
+Read `.agentic/context/governance.md` for the full security policy and sensitive file patterns.
 
 ## Rule 15: Respect Approval Gates
 
-Some actions always require explicit human approval. Read `agentic/context/governance.md` for the full list.
+Some actions always require explicit human approval. Read `.agentic/context/governance.md` for the full list.
 
 **Always require approval before:**
 
@@ -255,7 +260,7 @@ Before starting implementation:
 During implementation:
 
 - [ ] Keep changes small and focused
-- [ ] Make code changes in `projects/<project-name>/`
+- [ ] Make code changes in project runtime code folders
 - [ ] Create human tasks when blocked
 - [ ] Document non-trivial decisions
 - [ ] Follow package policy
