@@ -205,9 +205,10 @@ Runtime installation complete.
 - dry run:      $([[ "$DRY_RUN" == "1" ]] && echo yes || echo no)
 
 Next:
-1) Open project root in Cursor.
+1) Open project root in Cursor (rules load from $PROJECT_ROOT/.cursor/rules/, not from runtime dir alone).
 2) Validate context source registry at:
    $RUNTIME_ROOT/context/context-source-registry.md
 3) Start with a feature brief in:
    $RUNTIME_ROOT/workflow/briefs/
+4) If .cursor/rules is missing, re-run this script or copy .cursor/rules from toolkit source (see agentic/guide/CURSOR_RULES_RUNTIME.md).
 EOF

@@ -12,6 +12,10 @@ Some teams want fast startup with minimal docs. Others want full governance and 
 
 Project runtime repo (for example `my-project/`) after toolkit install.
 
+## Both profiles
+
+The installer always copies **Cursor rules** into `<project-root>/.cursor/rules/` (same for `minimal` and `full`). Without that path, Cursor will not auto-load toolkit behavior. See [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md).
+
 ## Profiles
 
 ### `minimal`
@@ -29,6 +33,8 @@ Installs:
 - runtime index files
 - workflow templates only
 
+Does **not** include (use `full`): workflow artifact folders, human-task lanes, health template, copied guides under `.agentic/guide/`, or `.agentic/rules/agent-behavior.md`.
+
 ### `full`
 
 Use when:
@@ -44,7 +50,7 @@ Installs:
 - human task templates/lanes
 - health report template
 - runtime rules and guide files
-- Cursor rule files in project `.cursor/rules/`
+- all toolkit guides under `.agentic/guide/` (including [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md))
 
 ## How To Choose
 

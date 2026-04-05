@@ -78,6 +78,7 @@ In the layered model, `.agentic` acts as runtime summary/control layer while det
 | [WORKFLOW_EXPLAINED.md](WORKFLOW_EXPLAINED.md) | Workflow chain details |
 | [HUMAN_TASKS.md](HUMAN_TASKS.md) | Human handoff model |
 | [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md) | Versioning and traceability rules |
+| [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md) | Cursor rules path and installer copy behavior |
 
 ---
 

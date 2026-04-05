@@ -113,6 +113,11 @@ Open `my-project/` in Cursor for daily work.
 
 Do **not** open toolkit source for day-to-day project implementation.
 
+### Cursor rules (auto-load contract)
+
+Cursor loads agent rules from **`my-project/.cursor/rules/*.mdc`**, not from `.agentic/`.  
+The installer copies rules from toolkit source into that folder. If agents seem to ignore the toolkit, confirm the project root is the workspace root and that `.cursor/rules/` exists. See [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md).
+
 ### 7) Confirm project git hygiene
 
 Installer default policy adds runtime ignore entries in project `.gitignore`:

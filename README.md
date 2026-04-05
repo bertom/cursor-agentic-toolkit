@@ -68,6 +68,8 @@ By default, installer applies recommended git hygiene in the project repo:
 - ignores runtime dir (for example `.agentic/`)
 - ignores ops link name (for example `project-ops`)
 
+**Cursor rules:** the installer copies toolkit `.cursor/rules/*.mdc` into **`<project-root>/.cursor/rules/`**. Cursor only auto-loads rules from that path when the project folder is your workspace root — not from `.agentic/` or from the toolkit repo alone. See [CURSOR_RULES_RUNTIME.md](agentic/guide/CURSOR_RULES_RUNTIME.md).
+
 Opt out:
 
 ```bash
@@ -97,6 +99,7 @@ See:
 | [RUNTIME_PROFILES.md](agentic/guide/RUNTIME_PROFILES.md) | Minimal vs full runtime profiles |
 | [UPGRADE_RUNTIME.md](agentic/guide/UPGRADE_RUNTIME.md) | Upgrade runtime from toolkit source |
 | [END_TO_END_EXAMPLE.md](agentic/guide/END_TO_END_EXAMPLE.md) | Full setup example with external memory |
+| [CURSOR_RULES_RUNTIME.md](agentic/guide/CURSOR_RULES_RUNTIME.md) | Why rules live in `.cursor/rules/` at project root |
 | [CONTEXT_SYSTEM.md](agentic/guide/CONTEXT_SYSTEM.md) | Context model + external sources |
 | [WORKFLOW_EXPLAINED.md](agentic/guide/WORKFLOW_EXPLAINED.md) | Workflow chain and traceability |
 | [HUMAN_TASKS.md](agentic/guide/HUMAN_TASKS.md) | Human handoff and return locations |

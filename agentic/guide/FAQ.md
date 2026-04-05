@@ -75,7 +75,7 @@ Yes. The templates are starting points. Adapt them to your project's needs. Remo
 
 ### How do agents know about the toolkit?
 
-Cursor rules in `.cursor/rules/` are automatically loaded by every agent session. The agent reads context, follows the workflow, and respects the rules without manual prompting.
+Cursor rules in **the project workspace root** `.cursor/rules/` are automatically loaded by every agent session. The installer copies those files from toolkit source into your repo; they are not read from `.agentic/` or from the toolkit repo unless that folder is what you opened. See [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md).
 
 ### Will I work with one agent for a whole feature?
 
