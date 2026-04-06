@@ -42,7 +42,7 @@ my-project/
 - **No silent decisions** — document non-trivial choices as decision notes in runtime workflow paths
 - **Package policy** — check before adding any dependency
 - **Human tasks** — when blocked by human-only action, create a task in runtime human-task lane
-- **QA is mandatory** — produce a QA report after completing a task pack
+- **QA is mandatory** — produce a QA report for each task pack; **update that same report as you go** (see `.cursor/rules/qa-checks.mdc` — incremental log) so ad-hoc fixes and re-runs are traceable, not only a single end-of-pack dump
 - **Update context** — after meaningful changes, update repo map, context index, or context files as needed
 
 ## Git and Security

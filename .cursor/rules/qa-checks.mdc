@@ -1,7 +1,8 @@
 ---
-description: Rules for running QA checks and producing QA reports
+description: Rules for running QA checks and producing QA reports (including incremental updates)
 globs:
   - .agentic/workflow/qa/**
+  - .agentic/workflow/tasks/**
 alwaysApply: false
 ---
 
@@ -12,6 +13,21 @@ alwaysApply: false
 - After completing all tasks in a task pack
 - When the user asks for a health check or QA review
 - Before declaring any non-trivial work complete
+- **During** implementation when you run a meaningful check (tests, build, lint) — log it immediately in the active QA file (see § Incremental QA log)
+
+## Incremental QA log (document as you go)
+
+Do **not** wait until the end of a task pack to touch the QA report if you are already running checks or fixing issues found by tests.
+
+1. **Create or open** the QA file for the active work as soon as the task pack is approved (or on first QA-related action):  
+   `.agentic/workflow/qa/QA-<YYYY-MM-DD>-<slug>.md`  
+   Slug usually matches task packs, e.g. `tp001-tp003`.
+2. **After each check run** (build, test subset, lint, manual smoke), append a short row or bullet under a running section:
+   - `## Incremental log` with timestamp or session note, **command run**, **pass/fail/skip**, one-line note.
+3. When a **failure is fixed**, append a line under that log entry: `Fixed: <what changed>`.
+4. At **task-pack completion**, add a consolidated **`## Checks`** table and **`## Notes` / `## Follow-up`**, and optionally a **`## Re-verification`** block if a later pass expanded scope (same QA file — keep one audit trail per pack batch unless the user prefers a new file).
+
+This keeps the workflow **QA** step honest when work spills across chats or includes user-driven re-runs after “implementation done.”
 
 ## Steps
 
@@ -25,7 +41,7 @@ alwaysApply: false
    - **Integration tests** — if available
    - **Accessibility** — if it's a web UI
    - **Smoke tests** — manual verification of key flows
-4. Create a QA report in `.agentic/workflow/qa/` named `QA-NNN-<slug>.md`
+4. Create or update a QA report in `.agentic/workflow/qa/` named `QA-NNN-<slug>.md` (or date-based slug as above)
 5. Document results honestly — failures are valuable information
 6. Report findings to the user
 

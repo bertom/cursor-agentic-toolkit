@@ -49,12 +49,14 @@ Start with a feature brief unless the change is trivial (typo, formatting, singl
 ### 5. Implementation
 - Work through tasks one at a time in project runtime root (e.g., `src/`, `app/`, `services/`)
 - Follow all rules in `.agentic/rules/agent-behavior.md` (or source equivalent when editing toolkit)
-- After completing all tasks, move to QA
+- **QA file hygiene:** Once the task pack is underway, create or open the matching `QA-…` file under `.agentic/workflow/qa/` and **append to an “Incremental log”** whenever you run build/tests/lint or land a fix for a failed check (see `.cursor/rules/qa-checks.mdc`)
+- After completing all tasks, finalize the QA section (consolidated tables + follow-ups) — do not rely only on memory across sessions
 
 ### 6. QA Report
 - Read `.agentic/workflow/templates/qa-report-template.md`
-- Run all applicable checks
-- Create `QA-NNN-<slug>.md` in `.agentic/workflow/qa/`
+- Run all applicable checks not yet recorded
+- **Update** the existing `QA-NNN-<slug>.md` for this task-pack batch rather than starting a duplicate file unless scope is wholly new
+- Add a **Re-verification** subsection if post-merge or user-driven passes added coverage (full test suite, env fixes, deploy smoke)
 - Report results to user
 
 ### 7. Documentation Update

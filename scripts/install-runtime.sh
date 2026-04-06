@@ -39,7 +39,7 @@ copy_file() {
   local src="$1"
   local dst="$2"
   if [[ -e "$dst" && "$FORCE" != "1" ]]; then
-    log "skip existing file: $dst"
+    log "unchanged (file exists; use --force to overwrite): $dst"
     return
   fi
   run "mkdir -p \"$(dirname "$dst")\""
@@ -177,14 +177,26 @@ fi
 if [[ -n "$OPS_TARGET" ]]; then
   require_dir "$OPS_TARGET"
   link_path="$PROJECT_ROOT/$OPS_LINK_NAME"
-  if [[ -L "$link_path" || -e "$link_path" ]]; then
+  if [[ -L "$link_path" ]]; then
+    current_target="$(readlink "$link_path" || true)"
+    if [[ "$current_target" == "$OPS_TARGET" ]]; then
+      log "ops link already points to target: $link_path -> $OPS_TARGET"
+    elif [[ "$FORCE" == "1" ]]; then
+      run "rm -f \"$link_path\""
+      run "ln -s \"$OPS_TARGET\" \"$link_path\""
+    else
+      die "Symlink exists with different target: $link_path -> $current_target (expected $OPS_TARGET; use --force to replace)"
+    fi
+  elif [[ -e "$link_path" ]]; then
     if [[ "$FORCE" == "1" ]]; then
       run "rm -rf \"$link_path\""
+      run "ln -s \"$OPS_TARGET\" \"$link_path\""
     else
-      die "Path already exists: $link_path (use --force to replace)"
+      die "Path already exists (not a symlink): $link_path (use --force to replace)"
     fi
+  else
+    run "ln -s \"$OPS_TARGET\" \"$link_path\""
   fi
-  run "ln -s \"$OPS_TARGET\" \"$link_path\""
 fi
 
 # Runtime git hygiene policy in project repo
