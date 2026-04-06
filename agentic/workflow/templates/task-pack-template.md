@@ -92,7 +92,7 @@ List any tasks that require human action. Create entries in `.agentic/human-task
 After all tasks are complete:
 
 - [ ] Run full QA suite
-- [ ] Create QA report
+- [ ] Finalize QA report (same file used during implementation—incremental log + consolidated checks)
 - [ ] Update [context-index.md](../../index/context-index.md) if needed
 - [ ] Update [repo-map.md](../../index/repo-map.md) if needed
 - [ ] Update documentation if workflow changed

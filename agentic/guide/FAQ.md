@@ -65,7 +65,7 @@ No. Decision notes are for significant choices: architecture shifts, dependency 
 
 ### What does "QA is mandatory" actually mean?
 
-It means every task pack should end with a QA report documenting what was tested and the results. The specific checks depend on your project — a static site needs different QA than a financial API.
+It means every task pack needs a **QA report** that documents what was tested and the results. Prefer **one QA file per batch**, opened early and **updated as you go** (incremental log when you run lint/tests/build or fix failures), then finalized when the pack is done—so work across sessions stays traceable. The specific checks depend on your project — a static site needs different QA than a financial API. See `.cursor/rules/qa-checks.mdc` in the project.
 
 ### Can I modify the templates?
 

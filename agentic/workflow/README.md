@@ -11,7 +11,7 @@ All workflow artifacts and templates live here. This is where the structured cha
 | `specs/` | Specifications — capture technical design | `SP-NNN-<slug>.md` |
 | `decisions/` | Decision notes — capture important choices | `DN-NNN-<slug>.md` |
 | `tasks/` | Task packs — capture implementation steps | `TP-NNN-<slug>.md` |
-| `qa/` | QA reports — capture validation results | `QA-NNN-<slug>.md` |
+| `qa/` | QA reports — validation trail (often incremental, then finalized) | `QA-NNN-<slug>.md` (or date-based; see qa-checks rule) |
 
 ## Workflow Chain
 

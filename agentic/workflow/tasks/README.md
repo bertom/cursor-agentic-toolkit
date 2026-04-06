@@ -10,4 +10,4 @@ Implementation breakdowns that divide a spec into small, focused tasks. Each tas
 
 **References:** Must link to its parent spec (`SP-NNN`) and feature brief (`FB-NNN`).
 
-**Next step:** Implement tasks, then create a QA report in `../qa/`.
+**Next step:** Implement tasks; open or create the matching QA report in `../qa/` early and update it incrementally; finalize when the pack is complete.

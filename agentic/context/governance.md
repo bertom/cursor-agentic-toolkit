@@ -144,7 +144,7 @@ The workflow chain itself serves as an audit trail:
 - **Specs** capture the approved technical approach
 - **Decision notes** capture choices and rationale
 - **Task packs** capture the plan and its execution status
-- **QA reports** capture validation results
+- **QA reports** capture validation results (often updated incrementally during a task pack, then finalized)
 - **Git history** captures what changed and when
 
 No additional audit tooling is required — the artifacts are the audit.

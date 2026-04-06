@@ -1,6 +1,6 @@
 # QA Report
 
-> Documents the results of quality assurance checks for a completed task pack. Work is not considered done until this report is complete and passing.
+> Documents quality assurance for a task pack batch. Open this file early; append to **Incremental log** as you run checks or fix failures; finalize tables and status when the pack is complete. Work is not considered done until this report is complete and passing.
 
 ## Metadata
 
@@ -13,6 +13,12 @@
 | Date            |       |
 | Overall Status  | pass / fail / partial |
 | Ops Memory Path | `project-ops/...` |
+
+## Incremental log
+
+Append during implementation (timestamp or session, command, pass/fail/skip, one-line note). When a failure is fixed, add `Fixed: …` under the relevant entry.
+
+- 
 
 ## Checks Performed
 

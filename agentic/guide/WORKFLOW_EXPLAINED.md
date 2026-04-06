@@ -103,11 +103,15 @@ The actual coding work. Agents implement tasks from the task pack one at a time.
 
 **Template:** `.agentic/workflow/templates/qa-report-template.md`
 
-Documents the results of all quality checks. Work is not considered complete until the QA report passes.
+Documents validation results. Work is not considered complete until the QA report passes.
 
-**When to create:** After all tasks in a task pack are implemented.
+**When to create or open:** As soon as the task pack is approved (or on the first QA-related action)—not only at the end.
 
-**Who creates it:** Agent runs checks, documents results.
+**During implementation:** Append to an **Incremental log** in the same QA file whenever you run checks or land fixes (see `.cursor/rules/qa-checks.mdc`).
+
+**At completion:** Consolidate into full check tables, notes, and overall status; prefer **updating** the existing QA file for the batch rather than starting duplicates.
+
+**Who creates it:** Agent runs checks and keeps the report current.
 
 **Required checks** (vary by project):
 - Lint check

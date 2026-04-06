@@ -21,7 +21,7 @@ Terms used throughout the Agentic Toolkit, defined in plain language.
 | **Package Policy** | Rules for dependencies: preferred packages, discouraged options, approval gates. |
 | **Project Mode** | `new`, `active`, `mature`, or `legacy`; controls strictness and caution level. |
 | **QA Gate** | Required quality validation checkpoint before work is complete. |
-| **QA Report** | Record of validation steps and outcomes for a task pack. |
+| **QA Report** | Record of validation for a task pack batch—often maintained incrementally (log as checks run), then consolidated at completion. |
 | **Traceability** | Ability to navigate artifact links from implementation back to intent. |
 | **Governance** | Policies covering git, security, permissions, and approval gates. |
 | **Approval Gate** | Action requiring explicit human approval before agent proceeds. |

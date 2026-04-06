@@ -95,14 +95,14 @@ Decisions that require documentation:
 
 ## Rule 7: Produce QA Reports
 
-After completing a task pack:
+Use one QA file per task-pack batch. **Do not wait until the end** to touch it if you already run checks or fix failures.
 
-1. Run all applicable quality checks (lint, type check, build, tests)
-2. Create a QA report using `.agentic/workflow/templates/qa-report-template.md`
-3. Document what was tested and the results
-4. Flag any issues found
+1. **Early:** When the task pack is approved (or on first QA-related action), create or open the QA file under `.agentic/workflow/qa/` (see `.cursor/rules/qa-checks.mdc` for naming and incremental log format).
+2. **During implementation:** After each meaningful check run (lint, type check, build, tests, smoke), append to the report’s **Incremental log**; when you fix a failure, note what changed.
+3. **At task-pack completion:** Run any checks not yet recorded, add consolidated **Checks** tables and **Notes** / **Follow-up**, and set overall status.
+4. Flag any issues found; add **Re-verification** if later passes expanded scope.
 
-**Work is not done until QA is documented.**
+**Work is not done until QA is documented** in that file (incremental trail + final summary).
 
 ## Rule 8: Update Context After Changes
 
@@ -269,7 +269,7 @@ After implementation:
 
 - [ ] Verify no secrets or sensitive data in changes
 - [ ] Run QA checks
-- [ ] Create QA report
+- [ ] Create or update QA report (incremental log during work; finalize at pack end)
 - [ ] Commit with descriptive message (if git policy allows)
 - [ ] Do NOT push (unless governance explicitly allows)
 - [ ] Update context files if needed
