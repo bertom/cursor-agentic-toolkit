@@ -43,7 +43,7 @@ Start with a feature brief unless the change is trivial (typo, formatting, singl
 - Read `.agentic/workflow/templates/task-pack-template.md`
 - Create `TP-NNN-<slug>.md` in `.agentic/workflow/tasks/`
 - Break spec into small tasks (each completable in one session)
-- Identify any human tasks, create them in `.agentic/human-tasks/pending/`
+- **Human tasks (required):** If anything needs human dashboard access, secrets, tokens, or env setup, **first** create the matching file(s) under `.agentic/human-tasks/pending/` (one file per distinct human action, from `human-task-template.md`), **then** reference those filenames in the task pack’s Human Tasks table and in any “Blocked By” rows. Do not substitute a table-only or inline note
 - Present to user for approval
 
 ### 5. Implementation

@@ -19,6 +19,10 @@ Agents can write code, but they cannot:
 
 When an agent encounters a task it cannot perform, it creates a human task instead of getting stuck or guessing.
 
+### Common mistake
+
+Documenting “human tasks” only inside the **task pack** (e.g. “tokens + Netlify env”) **without** creating files under `pending/` is **not** following the toolkit. The pending markdown file is what the human executes against and what makes blocking explicit across sessions.
+
 ## Where Are They Stored?
 
 ```

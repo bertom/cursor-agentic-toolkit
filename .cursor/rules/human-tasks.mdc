@@ -2,6 +2,7 @@
 description: Rules for creating and managing human tasks
 globs:
   - .agentic/human-tasks/**
+  - .agentic/workflow/tasks/**
 alwaysApply: false
 ---
 
@@ -24,9 +25,11 @@ Create a human task whenever you encounter something that requires:
 1. Read the template at `.agentic/human-tasks/human-task-template.md`
 2. Create a new file in `.agentic/human-tasks/pending/` with a descriptive name (e.g., `setup-stripe-webhook.md`)
 3. Fill in all sections — especially **Steps** and **Expected Return Information**
-4. Note the blocking relationship in the current task pack
+4. Note the blocking relationship in the current task pack (include the **pending filename** in the Human Tasks table)
 5. Tell the user about the human task and what it blocks
 6. Continue with non-blocked work
+
+**Not sufficient:** describing “Cloudflare tokens + Netlify env” only inside the task pack without creating the corresponding `pending/*.md` files.
 
 ## Key Principles
 

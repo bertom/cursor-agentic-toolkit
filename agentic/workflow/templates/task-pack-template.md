@@ -81,11 +81,11 @@ What must be true before work begins?
 
 ## Human Tasks
 
-List any tasks that require human action. Create entries in `.agentic/human-tasks/pending/` for each.
+**Required when any human-only step exists (dashboards, API keys, hosting env, DNS, etc.):** create **one file per row** in `.agentic/human-tasks/pending/` before the pack is “ready to execute,” then reference that filename here. A table-only mention without files is **not** a completed human-task step.
 
-| Human Task | Reason | Blocks |
-|------------|--------|--------|
-|            |        |        |
+| Pending file (e.g. `pending/cloudflare-analytics-token.md`) | Human Task | Reason | Blocks |
+|-------------------------------------------------------------|------------|--------|--------|
+|  |  |  |  |
 
 ## Post-Completion
 

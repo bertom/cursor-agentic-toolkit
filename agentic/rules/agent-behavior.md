@@ -65,15 +65,17 @@ Before introducing any new dependency:
 
 ## Rule 5: Create Human Tasks When Blocked
 
-If a task requires action you cannot perform (dashboard login, API key generation, DNS setup, etc.):
+If a task requires action you cannot perform (dashboard login, API key generation, DNS setup, env vars in hosting UI, etc.):
 
-1. Create a human task file in `.agentic/human-tasks/pending/`
+1. Create a human task file in `.agentic/human-tasks/pending/` (**one file per distinct human action**)
 2. Use the template from `.agentic/human-tasks/human-task-template.md`
 3. Include clear steps, expected return information, and validation criteria
-4. Note the blocking relationship in the task pack
+4. Note the blocking relationship in the task pack and **list the pending filename(s)** in the Human Tasks section
 5. Continue with non-blocked work
 
 **Never guess at configuration that requires human access. Create a human task instead.**
+
+**Incomplete:** writing “human tasks: tokens + Netlify env” only in the task pack without creating the matching `pending/*.md` files. The file is the handoff artifact, not optional commentary.
 
 ## Rule 6: Document Decisions
 

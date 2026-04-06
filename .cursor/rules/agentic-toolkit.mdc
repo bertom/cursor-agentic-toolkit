@@ -41,7 +41,7 @@ my-project/
 - **Small changes** — avoid touching more than 5-10 files without approval
 - **No silent decisions** — document non-trivial choices as decision notes in runtime workflow paths
 - **Package policy** — check before adding any dependency
-- **Human tasks** — when blocked by human-only action, create a task in runtime human-task lane
+- **Human tasks** — for dashboard/API keys/env vars/portal steps only a human can do: create **one markdown file per item** in `.agentic/human-tasks/pending/` using `human-task-template.md`, **before** you treat the task pack as ready. Mentioning “human task” only in prose or in the task-pack table **without** those files is incomplete
 - **QA is mandatory** — produce a QA report for each task pack; **update that same report as you go** (see `.cursor/rules/qa-checks.mdc` — incremental log) so ad-hoc fixes and re-runs are traceable, not only a single end-of-pack dump
 - **Update context** — after meaningful changes, update repo map, context index, or context files as needed
 
