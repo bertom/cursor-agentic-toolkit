@@ -15,8 +15,21 @@ If the user says things like:
 - "We need to add..."
 - "Can you implement..."
 - "Let's create..."
+- "Let's do [scope]…" / numbered deliverables (e.g. "do 1 and 2")
+- "Go ahead" / "ship it" **after** a planning chat but **before** artifacts exist
 
-Start with a feature brief unless the change is trivial (typo, formatting, single-line fix).
+→ **Open or draft a feature brief first** unless the change is **trivial** (typo, formatting, single-line fix, or ≤3 files with no new behavior). **Do not jump to implementation** because the plan was discussed in prose only.
+
+### Hard stop before code
+
+For any **non-trivial** feature (see `agentic-toolkit.mdc` **Implementation gate**):
+
+1. Create **FB-NNN** → user **approves** (or explicitly skips).
+2. Create **SP-NNN** → user **approves** (or explicitly skips).
+3. Create **TP-NNN** (and **human-tasks/pending/*.md** if needed) → user **approves** (or explicitly skips).
+4. **Only then** edit `apps/` / `packages/` / feature tests.
+
+If the user pressures for immediate code, reply once with: *"I can draft FB-NNN now (quick) or you can say **skip workflow for this item** to proceed without gates."* Default is **brief first**.
 
 ## Workflow Steps
 

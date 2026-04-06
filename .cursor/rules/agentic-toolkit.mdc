@@ -62,6 +62,13 @@ Intent → Feature Brief → Spec → Decision Note (if needed) → Task Pack �
 Templates are in `agentic/workflow/templates/` (source) and runtime `.agentic/workflow/templates/` (installed). Artifacts go to runtime and external ops paths (`.agentic/workflow/...`, `project-ops/...`) based on project policy.
 In runtime usage, these paths map to `.agentic/workflow/...` and may reference `project-ops/...` for full operational records.
 
+### Implementation gate (do not skip)
+
+- **No feature code** in `apps/`, `packages/`, or multi-file `tests/` for **non-trivial** work until **FB + SP + TP** exist **and** the user has **approved** each step (or **explicitly** told you to skip the workflow for *this* item in chat — record that in the brief or a one-line decision note).
+- **Non-trivial** includes: new routes, SEO/syndication/feeds, analytics, integrations, new UI flows, security-sensitive behavior, or anything you would describe as a “feature” — **not** typos, single-line fixes, or tiny refactors under ~3 files with no behavior change.
+- If code **already landed** without artifacts: **stop and backfill** the same day — create FB/SP/TP (mark *backfill / implementation preceded workflow*), add QA, update `context-index.md`. **Never** treat the omission as approval retroactively without user visibility.
+- Read `.cursor/rules/workflow-feature.mdc` for triggers (“let’s do…”, “implement…”) and step-by-step gates.
+
 ## When the User Describes Intent
 
 If the user describes what they want to build or change:
