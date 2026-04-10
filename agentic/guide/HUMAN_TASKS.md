@@ -40,6 +40,14 @@ Each human task is a markdown file in `pending/` with a descriptive filename (e.
 ```markdown
 # [Task Title]
 
+## Assignment & traceability
+
+| Field | Value |
+|-------|-------|
+| **Assigned to** | Human responsible for the work |
+| **Created (date)** | `YYYY-MM-DD` |
+| **Created by** | Who filed the task |
+
 ## What
 
 Brief description of what needs to be done.
@@ -87,19 +95,17 @@ Which implementation tasks are blocked until this is complete:
 |-------------|-----------|
 |             |           |
 
-## Metadata
+## Metadata (completion)
 
-| Field          | Value |
-|----------------|-------|
-| Created        |       |
-| Priority       | high / medium / low |
-| Estimated Time |       |
-| Created By     |       |
-| Completed      |       |
-| Completed By   |       |
+| Field | Value |
+|-------|-------|
+| Priority | high / medium / low |
+| Estimated time | |
+| Completed (date) | When moved to `completed/` |
+| Completed by | Who performed the steps |
 ```
 
-> When complete, move the file from `pending/` to `completed/` and fill in the Completed fields.
+> When complete, move the file from `pending/` to `completed/` and fill the **completion** metadata. **Assignment & traceability** stays for the record.
 
 ## Workflow
 
@@ -107,8 +113,9 @@ Which implementation tasks are blocked until this is complete:
 
 1. Agent identifies a task it cannot perform
 2. Agent creates a file in `.agentic/human-tasks/pending/` using the format above
-3. Agent notes the human task in the relevant task pack
-4. Agent continues with non-blocked work
+3. Agent fills **Assigned to**, **Created (date)** (`YYYY-MM-DD`), and **Created by** (ask the user for assignee if needed; use `TBD` only with a note who must assign)
+4. Agent notes the human task in the relevant task pack
+5. Agent continues with non-blocked work
 
 ### Completing a Human Task
 

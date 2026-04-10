@@ -28,6 +28,8 @@ Run installer from toolkit source:
 
 Open `my-project/` (not toolkit source).
 
+After install, read `.agentic/team/ONBOARDING.md` if you are new (`guide/` and `.agentic/rules/` links inside it need **full** profile). Use `.agentic/workflow/WORKFLOW_VALIDATION.md` for stage-by-stage checks. Before a PR (especially manual coding), use `.agentic/team/prompts/pr-review-prompt.md` (paste or `@`-mention) or `.agentic/team/CONTEXT_SYNC.md` if you use no AI. Record toolkit ref in `.agentic/README.md`.
+
 ### 3) Ensure runtime layer exists
 
 In project root:

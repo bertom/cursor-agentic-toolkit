@@ -50,7 +50,7 @@ Before implementation in a project runtime, agents read:
 - `.agentic/context/package-policy.md`
 - `.agentic/context/governance.md`
 
-In the layered model, `.agentic` acts as runtime summary/control layer while detailed artifacts live in external `project-ops`.
+In the layered model, `.agentic/` holds **context summaries, rules, and (often) workflow artifacts** in the project repo. Teams may **commit** the whole tree for shared traceability ([Team Kit](../team/TEAM_KIT_V1_REQUIREMENTS.md)). Long-form or personal notes may still live under external `project-ops/`; if both exist, **committed `.agentic/` wins** when they disagree.
 
 ## Core Principles
 
@@ -79,6 +79,10 @@ In the layered model, `.agentic` acts as runtime summary/control layer while det
 | [HUMAN_TASKS.md](HUMAN_TASKS.md) | Human handoff model |
 | [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md) | Versioning and traceability rules |
 | [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md) | Cursor rules path and installer copy behavior |
+| [WORKFLOW_VALIDATION.md](../workflow/WORKFLOW_VALIDATION.md) | Per-stage validation (agents + humans) |
+| [ONBOARDING.md](../team/ONBOARDING.md) | New developer / team path |
+| [TEAM_KIT_V1_REQUIREMENTS.md](../team/TEAM_KIT_V1_REQUIREMENTS.md) | Team mode: shared `.agentic/`, PR prompt, gitignore defaults |
+| [AI_INSTRUCTIONS_SYNC.md](../team/AI_INSTRUCTIONS_SYNC.md) | Cursor rules vs `.github/copilot-instructions.md` |
 
 ---
 

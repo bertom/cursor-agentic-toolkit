@@ -89,6 +89,15 @@ Check whether runtime summaries in `.agentic` still match external details in `p
 - [ ] External source outdated
 - [ ] External source conflicts with local context
 
+### Team Kit alignment (optional)
+
+| Check | Status | Notes |
+|-------|--------|-------|
+| Repo `.agentic/` vs `project-ops` / personal notes — **repo wins** on conflict | ok / gap / n/a | |
+| After manual-only merges: **PR prompt** or **CONTEXT_SYNC** followed | ok / gap / n/a | |
+| `.cursor/rules` vs `.github/copilot-instructions.md` materially in sync | ok / gap / n/a | |
+| `.agentic/README.md` toolkit alignment table current | ok / gap / n/a | |
+
 ## Architecture Clarity
 
 | Question | Answer |

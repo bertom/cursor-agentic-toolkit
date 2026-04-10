@@ -47,7 +47,9 @@ When external sources are used:
 
 Runtime context files are summaries for fast agent execution.
 
-Detailed artifacts should live in external project operational memory (`project-ops/...`), then be summarized in `.agentic/context/...`.
+**Team / committed mode:** workflow artifacts (briefs, specs, tasks, QA) often live under **`.agentic/workflow/...`** in git — same rules apply: keep them aligned with code.
+
+**Layered / external mode:** detailed or sensitive artifacts may live in **`project-ops/...`**, with summaries in `.agentic/context/...`. If you use both, resolve conflicts toward **committed `.agentic/`** (see [Team Kit](../team/TEAM_KIT_V1_REQUIREMENTS.md) §2.4).
 
 ## Context Index
 

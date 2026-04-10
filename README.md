@@ -43,9 +43,9 @@ Folder names are configurable. `.agentic` and `project-ops` are recommended defa
 
 ## Why This Separation
 
-- keeps project git history clean
 - keeps toolkit reusable across many projects
-- keeps project memory outside product repo when desired
+- keeps **personal** operational memory outside the product repo (`project-ops` symlink; ignored by default)
+- teams can **commit** `.agentic/` for shared context, workflow, and rules (default install)
 - supports external memory stores without complicating agent paths
 
 ## Recommended External Setup
@@ -63,14 +63,22 @@ Scripted install:
   --profile full
 ```
 
-By default, installer applies recommended git hygiene in the project repo:
+By default, installer uses **`--gitignore-mode committed`** (team-friendly):
 
-- ignores runtime dir (for example `.agentic/`)
-- ignores ops link name (for example `project-ops`)
+- **does not** ignore `.agentic/` — commit the runtime layer for shared context and workflow
+- **does** ignore the ops link name only (for example `project-ops`), so local personal operational memory stays out of git
+
+If you **cannot** commit `.agentic/` (e.g. public repo constraints), use **`--gitignore-mode recommended`** to ignore both `.agentic/` and the ops link name.
+
+**Toolkit alignment:** after install, fill the table at the top of `.agentic/README.md` with the toolkit git ref you installed from. Toolkit changes are summarized in [CHANGELOG.md](CHANGELOG.md).
+
+**Team Kit:** onboarding, PR prompt, and no-AI context sync live under `agentic/team/` in this repo (installed to `.agentic/team/`). See [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md).
 
 **Cursor rules:** the installer copies toolkit `.cursor/rules/*.mdc` into **`<project-root>/.cursor/rules/`**. Cursor only auto-loads rules from that path when the project folder is your workspace root — not from `.agentic/` or from the toolkit repo alone. See [CURSOR_RULES_RUNTIME.md](agentic/guide/CURSOR_RULES_RUNTIME.md).
 
-Opt out:
+**GitHub Copilot (VS Code):** the installer also writes **`<project-root>/.github/copilot-instructions.md`** from `agentic/team/copilot-instructions.project.md` (skipped if the file already exists; use `--force` to replace). Keep Copilot and Cursor aligned: [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md).
+
+Opt out of any `.gitignore` changes:
 
 ```bash
 ./scripts/install-runtime.sh --project-root "/path/to/my-project" --gitignore-mode none
@@ -104,6 +112,8 @@ See:
 | [WORKFLOW_EXPLAINED.md](agentic/guide/WORKFLOW_EXPLAINED.md) | Workflow chain and traceability |
 | [HUMAN_TASKS.md](agentic/guide/HUMAN_TASKS.md) | Human handoff and return locations |
 | [DOCUMENTATION_STANDARDS.md](agentic/guide/DOCUMENTATION_STANDARDS.md) | Versioning and traceability |
+| [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md) | Team mode: shared `.agentic/`, Copilot, PR prompt, onboarding |
+| [CHANGELOG.md](CHANGELOG.md) | Toolkit source release notes |
 
 ## License
 

@@ -8,6 +8,8 @@ alwaysApply: false
 
 When the user describes a feature, enhancement, or significant change, follow the workflow chain.
 
+**Validation:** At each stage, satisfy the **Pass criteria** in `.agentic/workflow/WORKFLOW_VALIDATION.md` (toolkit source) or `.agentic/workflow/WORKFLOW_VALIDATION.md` (runtime) before moving to the next artifact. That file defines **agent vs human** responsibilities.
+
 ## Detect Intent
 
 If the user says things like:

@@ -2,6 +2,16 @@
 
 > Human task — requires manual action that an agent cannot perform.
 
+## Assignment & traceability
+
+| Field | Value |
+|-------|-------|
+| **Assigned to** | _Full name or handle of the human responsible for completing this task_ |
+| **Created (date)** | _YYYY-MM-DD — when this file was created_ |
+| **Created by** | _Who created the task (e.g. agent session, teammate name)_ |
+
+_Fill **Assigned to** and **Created (date)** when the file is created. If the assignee is unknown, set `TBD` and note who must nominate an owner in **Blocking** or **What**._
+
 ## What
 
 Brief description of what needs to be done.
@@ -47,17 +57,15 @@ Which implementation tasks are blocked until this is complete.
 |-------------|-----------|-------|
 |             |           |       |
 
-## Metadata
+## Metadata (completion)
 
-| Field          | Value |
-|----------------|-------|
-| Created        |       |
-| Priority       | high / medium / low |
-| Estimated Time |       |
-| Created By     |       |
-| Completed      |       |
-| Completed By   |       |
+| Field | Value |
+|-------|-------|
+| Priority | high / medium / low |
+| Estimated time | |
+| Completed (date) | YYYY-MM-DD when moved to `completed/` |
+| Completed by | Name of human who performed the steps |
 
 ---
 
-*When complete, move this file from `pending/` to `completed/` and fill in the Completed fields.*
+*When complete, move this file from `pending/` to `completed/` and fill **Metadata (completion)**. **Assignment & traceability** is left unchanged for audit trail.*

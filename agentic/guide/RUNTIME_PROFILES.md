@@ -16,6 +16,16 @@ Project runtime repo (for example `my-project/`) after toolkit install.
 
 The installer always copies **Cursor rules** into `<project-root>/.cursor/rules/` (same for `minimal` and `full`). Without that path, Cursor will not auto-load toolkit behavior. See [CURSOR_RULES_RUNTIME.md](CURSOR_RULES_RUNTIME.md).
 
+It also copies **`.agentic/README.md`**, **`WORKFLOW_VALIDATION.md`**, optional **`index/context-changelog.md`**, and **`team/`** (onboarding, PR prompt, Copilot source, sync playbook) so every profile can use validation and the pre-PR prompt. It writes **`.github/copilot-instructions.md`** at the **project root** from **`agentic/team/copilot-instructions.project.md`** (alongside `.cursor/rules/`).
+
+## Gitignore modes (`--gitignore-mode`)
+
+| Mode | Effect |
+|------|--------|
+| **`committed`** (default) | Adds **only** the ops link name (e.g. `project-ops`) to `.gitignore`. **`.agentic/` is meant to be committed** (team / shared runtime). |
+| **`recommended`** | Adds **`.agentic/`** and the ops link name — use when runtime must stay private (e.g. public repo). |
+| **`none`** | Does not modify `.gitignore`. |
+
 ## Profiles
 
 ### `minimal`

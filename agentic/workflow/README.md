@@ -27,3 +27,8 @@ Each artifact references its parent and children by ID for traceability.
 Agents read the template from `templates/` and create a new file in the appropriate folder. Number sequentially — check existing files to find the next number.
 
 See [WORKFLOW_EXPLAINED.md](../guide/WORKFLOW_EXPLAINED.md) for the full guide.
+
+## Validation
+
+- **[WORKFLOW_VALIDATION.md](WORKFLOW_VALIDATION.md)** — explicit validation at each stage (agents and humans), PR expectations, quick checklists.
+- **[ONBOARDING.md](../team/ONBOARDING.md)** — human-friendly summary and first-hour path.

@@ -38,7 +38,7 @@ From toolkit source:
   --ops-link-name "project-ops" \
   --ops-target "/external/project-memory/my-project" \
   --profile full \
-  --gitignore-mode recommended
+  --gitignore-mode committed
 ```
 
 Preview actions without writing:
@@ -47,8 +47,7 @@ Preview actions without writing:
 ./scripts/install-runtime.sh --project-root "/path/to/my-project" --profile full --dry-run
 ```
 
-Installer default writes project `.gitignore` entries for runtime dir and ops link name.  
-Use `--gitignore-mode none` to disable.
+Installer default (`committed`) adds **only** the ops link name to `.gitignore` so **`.agentic/` can be committed**. Use `--gitignore-mode recommended` to ignore `.agentic/` too (public repo / private runtime). Use `--gitignore-mode none` to leave `.gitignore` unchanged.
 
 ### 2) Manual bootstrap (if script is not used)
 

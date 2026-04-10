@@ -59,6 +59,8 @@ Read the applicable governance file (`agentic/context/governance.md` in source o
 For non-trivial work, follow:
 Intent → Feature Brief → Spec → Decision Note (if needed) → Task Pack → Implementation → QA Report → Doc Update
 
+**Validation gates:** `agentic/workflow/WORKFLOW_VALIDATION.md` (source) or `.agentic/workflow/WORKFLOW_VALIDATION.md` (runtime) — explicit pass criteria per stage for agents and humans. Onboarding: `agentic/team/ONBOARDING.md` / `.agentic/team/ONBOARDING.md`.
+
 Templates are in `agentic/workflow/templates/` (source) and runtime `.agentic/workflow/templates/` (installed). Artifacts go to runtime and external ops paths (`.agentic/workflow/...`, `project-ops/...`) based on project policy.
 In runtime usage, these paths map to `.agentic/workflow/...` and may reference `project-ops/...` for full operational records.
 

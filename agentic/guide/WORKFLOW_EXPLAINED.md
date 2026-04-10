@@ -17,6 +17,15 @@ Intent
   → Documentation Update keeps context current
 ```
 
+## Validation (agents and humans)
+
+Each stage has **explicit pass criteria** and split responsibility between **agents** (draft, run checks, keep QA log) and **humans** (approve artifacts, review PRs, execute human tasks).
+
+- **Canonical matrix:** [WORKFLOW_VALIDATION.md](../workflow/WORKFLOW_VALIDATION.md) — use at every gate before advancing.
+- **Onboarding (plain language):** [ONBOARDING.md](../team/ONBOARDING.md) — same rules, first-hour path for new developers.
+
+Agents should read the matrix when following `.cursor/rules/workflow-feature.mdc`.
+
 ## Why a Chain?
 
 Without structure, agents tend to jump straight from a vague request to code. This leads to:

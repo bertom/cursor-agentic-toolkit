@@ -17,6 +17,17 @@ In layered mode, this file usually lives in project operational memory:
 | [governance.md](../context/governance.md) | Git policy, security, agent permissions, approval gates | current | 2026-04-04 |
 | [context-source-registry-template.md](../context/context-source-registry-template.md) | Template for tracking local/external context sources | template | — |
 
+### Workflow & onboarding
+
+| Document | Purpose |
+|----------|---------|
+| [WORKFLOW_VALIDATION.md](../workflow/WORKFLOW_VALIDATION.md) | **Validation matrix** — what to check at each stage; agent vs human; pass criteria |
+| [ONBOARDING.md](../team/ONBOARDING.md) | **New developer path** — chain summary, validation in plain language |
+| [CONTEXT_SYNC.md](../team/CONTEXT_SYNC.md) | **No-AI** context update procedure before PR |
+| [pr-review-prompt.md](../team/prompts/pr-review-prompt.md) | **PR readiness prompt** — paste into chat or `@`-mention this file; doc gaps + proposed `.agentic/` edits |
+| [AI_INSTRUCTIONS_SYNC.md](../team/AI_INSTRUCTIONS_SYNC.md) | **Cursor + Copilot** — how `.cursor/rules` and `.github/copilot-instructions.md` stay aligned |
+| [copilot-instructions.project.md](../team/copilot-instructions.project.md) | **Source** for installed `.github/copilot-instructions.md` (Copilot) |
+
 ### Status Key
 
 | Status | Meaning |
@@ -33,10 +44,11 @@ In layered mode, this file usually lives in project operational memory:
 |------|---------|--------|-------------|
 | [context-index.md](context-index.md) (this file) | Catalog of all context sources | current | Bootstrap |
 | [repo-map.md](repo-map.md) | Repository structure overview | current | Bootstrap |
+| [context-changelog.md](context-changelog.md) | Optional rolling log of material context changes (Team Kit §6.1) | template | Bootstrap |
 
 ## Workflow Templates
 
-In runtime usage, templates live in `.agentic/workflow/templates/` and detailed artifacts are typically tracked in `project-ops/workflow/...`.
+Templates live in `.agentic/workflow/templates/`. **Artifacts** (briefs, specs, tasks, QA) usually live in `.agentic/workflow/{briefs,specs,tasks,qa,...}/` when the team commits `.agentic/` ([Team Kit](../team/TEAM_KIT_V1_REQUIREMENTS.md)). Optionally mirror or archive under `project-ops/workflow/...` if you use external operational memory.
 
 ## External Context Sources
 

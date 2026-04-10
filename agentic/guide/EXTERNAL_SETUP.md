@@ -43,7 +43,7 @@ Option A (recommended): scripted install from toolkit source
   --project-root "$(pwd)" \
   --runtime-dir ".agentic" \
   --profile full \
-  --gitignore-mode recommended
+  --gitignore-mode committed
 ```
 
 Preview first:
@@ -120,14 +120,11 @@ The installer copies rules from toolkit source into that folder. If agents seem 
 
 ### 7) Confirm project git hygiene
 
-Installer default policy adds runtime ignore entries in project `.gitignore`:
+Installer **default** (`--gitignore-mode committed`) adds **only** the ops link name (e.g. `project-ops`) to `.gitignore` so **`.agentic/` is not ignored** and teams can commit shared runtime.
 
-- `.agentic/` (or custom runtime dir)
-- `project-ops` (or custom ops link name)
+Use `--gitignore-mode recommended` to ignore **both** `.agentic/` and the ops link (e.g. public repo, private runtime).
 
-If you do not want installer to update `.gitignore`, run with:
-
-`--gitignore-mode none`
+Use `--gitignore-mode none` if you do not want the installer to touch `.gitignore`.
 
 ## Example Structures
 

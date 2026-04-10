@@ -26,6 +26,8 @@ cd "/Users/alex/tools/cursor-agentic-toolkit"
   --profile full
 ```
 
+With default `--gitignore-mode committed`, `.gitignore` lists **`project-ops`** only — **commit `.agentic/`** if your team shares runtime (see [RUNTIME_PROFILES.md](RUNTIME_PROFILES.md)).
+
 ## 2) Resulting runtime shape
 
 ```

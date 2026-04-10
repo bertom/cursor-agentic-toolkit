@@ -69,7 +69,7 @@ If a task requires action you cannot perform (dashboard login, API key generatio
 
 1. Create a human task file in `.agentic/human-tasks/pending/` (**one file per distinct human action**)
 2. Use the template from `.agentic/human-tasks/human-task-template.md`
-3. Include clear steps, expected return information, and validation criteria
+3. Fill **Assignment & traceability**: **Assigned to** (name/handle or `TBD` + who picks owner), **Created (date)** (`YYYY-MM-DD`), **Created by**; plus clear steps, expected return information, and validation criteria
 4. Note the blocking relationship in the task pack and **list the pending filename(s)** in the Human Tasks section
 5. Continue with non-blocked work
 
@@ -155,6 +155,8 @@ For non-trivial work, follow the workflow:
 5. QA Report → captures validation
 
 Skip steps only for trivial changes (typos, formatting). See `.agentic/guide/WORKFLOW_EXPLAINED.md` for guidance.
+
+**Validation gates:** Before treating a stage as complete, meet the **Pass criteria** in `.agentic/workflow/WORKFLOW_VALIDATION.md` (agent tasks + required human approval). Do not advance the chain on undocumented skips.
 
 ## Rule 12: Ensure Traceability
 

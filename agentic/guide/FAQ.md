@@ -131,6 +131,16 @@ Human tasks in `pending/` will keep blocking dependent implementation tasks. Rev
 
 If the task no longer requires human action (e.g., an API was set up and the agent now has access), the agent can document the completion and move the file to `completed/`.
 
+## Team / shared `.agentic/`
+
+### We’re multiple developers — where do we start?
+
+Read `.agentic/team/ONBOARDING.md`, then `.agentic/workflow/WORKFLOW_VALIDATION.md`. Policy and checklist: `.agentic/team/TEAM_KIT_V1_REQUIREMENTS.md`. Install with default `--gitignore-mode committed` so `.agentic/` is not ignored.
+
+### I don’t use AI — how do I keep docs aligned?
+
+Follow `.agentic/team/CONTEXT_SYNC.md` before meaningful PRs. If you use an AI tool only for wording, you can still `@`-mention `.agentic/team/prompts/pr-review-prompt.md` in chat; you commit every change.
+
 ## Maintenance
 
 ### How do I know if the toolkit is healthy?

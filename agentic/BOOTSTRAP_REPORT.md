@@ -11,8 +11,12 @@ This file records what reusable assets exist in toolkit source for bootstrap/ins
 
 - `agentic/context/*` runtime context templates
 - `agentic/workflow/templates/*` workflow templates
+- `agentic/workflow/WORKFLOW_VALIDATION.md` per-stage validation matrix
 - `agentic/guide/*` user guides
 - `agentic/rules/*` behavior rules
+- `agentic/team/*` Team Kit (onboarding, PR prompt, requirements, `CONTEXT_SYNC`, `copilot-instructions.project.md`, `AI_INSTRUCTIONS_SYNC.md`)
+- `agentic/README.md` runtime readme (toolkit alignment table)
+- `agentic/index/context-changelog.md` optional context history template
 - `.cursor/rules/*` Cursor rule templates
 
 ## Runtime Bootstrap Target
