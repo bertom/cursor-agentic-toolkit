@@ -26,6 +26,28 @@ AI **amplifies** good context (fewer wrong assumptions). It does **not** remove 
 
 Optional: [HUMAN_TASKS.md](../guide/HUMAN_TASKS.md), [QUICKSTART.md](../guide/QUICKSTART.md). If a link 404s, re-run install with `--profile full`.
 
+## Start prompt (new chat)
+
+Paste or adapt this so the agent loads the right habits first:
+
+> Read **`.agentic/index/context-index.md`**, **`.agentic/context/governance.md`**, and **`.cursor/rules/agentic-toolkit.mdc`**. For **non-trivial** work (anything beyond tiny fixes), follow the workflow: **feature brief → spec → task pack** with my approval at each gate before changing **application code** (use the folders your repo actually uses — see **`repo-map`** / **`technical-context`**; e.g. `apps/`, `packages/`, `src/`); create **`.agentic/human-tasks/pending/*.md`** for any portal-only or machine-local steps. Use **`.agentic/workflow/WORKFLOW_VALIDATION.md`** for pass criteria.
+
+Adjust the last sentence if your task is explicitly trivial (typo, single-line fix, ≤3 files, no new behavior).
+
+## When the agent drifts (not following workflow)
+
+**Drift** means: jumping to implementation without a **feature brief**, editing many files without **SP/TP**, skipping **human-task files** while mentioning “you’ll need to set env in the portal,” or ignoring **`.agentic/`** context.
+
+What to do:
+
+1. **Stop the current direction** — one clear message: e.g. *“Stop coding. We use the workflow; non-trivial work needs an FB first.”*
+2. **Point at the rule** — *“Read `.cursor/rules/workflow-feature.mdc` and `.cursor/rules/agentic-toolkit.mdc` — feature brief before code.”*
+3. **Ask for the missing artifact** — *“Draft **FB-NNN** in `.agentic/workflow/briefs/` from this intent; I’ll approve before spec.”*
+4. **If you intentionally want to bypass gates** — say so explicitly: *“**Skip workflow for this item**”* and ask the agent to **record that** in a brief or one-line decision note so traceability stays honest.
+5. **If drift repeats** — start the next chat with the **[Start prompt](#start-prompt-new-chat)** above, or add a line to your user rules: *“Always start non-trivial work with a feature brief; don’t edit application code until I approve the FB.”*
+
+Escalation is **process**, not personality: the repo rules are the shared contract.
+
 ## The chain (intent → delivery)
 
 ```

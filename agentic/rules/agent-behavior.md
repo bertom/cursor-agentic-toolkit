@@ -146,15 +146,17 @@ Check `.agentic/context/technical-context.md` for the current project mode and a
 
 ## Rule 11: Use the Workflow Chain
 
-For non-trivial work, follow the workflow:
+For **non-trivial** work, **do not implement in primary application code** (e.g. `apps/`, `packages/`, `src/`, or multi-file feature tests — use whatever paths your `repo-map` / `technical-context` defines) **until a feature brief (FB) exists and is approved** (or the user explicitly skips workflow for that item — document the skip). Chat messages, user stories, and external specs are inputs **to** the FB, not replacements for it.
 
-1. Feature Brief → captures intent
+Then follow the workflow:
+
+1. **Feature Brief** → captures intent (**first**; no application code before this gate unless trivial)
 2. Spec → captures design
 3. Decision Note → captures important choices (when needed)
 4. Task Pack → captures implementation plan
 5. QA Report → captures validation
 
-Skip steps only for trivial changes (typos, formatting). See `.agentic/guide/WORKFLOW_EXPLAINED.md` for guidance.
+Skip the FB and the rest of the chain only for **trivial** changes (typos, formatting, single-line fixes, ≤3 files with no new behavior). See `.agentic/guide/WORKFLOW_EXPLAINED.md` for guidance.
 
 **Validation gates:** Before treating a stage as complete, meet the **Pass criteria** in `.agentic/workflow/WORKFLOW_VALIDATION.md` (agent tasks + required human approval). Do not advance the chain on undocumented skips.
 

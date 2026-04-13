@@ -12,6 +12,9 @@ Thumbs.db
 # Cursor
 .specstory/
 
+# Local review symlink (do not commit)
+_review-svb-agentic
+
 # Dependencies
 node_modules/
 vendor/

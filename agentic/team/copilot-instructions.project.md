@@ -11,6 +11,8 @@ You work in a project that uses the **Agentic Toolkit** runtime under `.agentic/
 
 ## Workflow
 
+**Non-trivial work:** Create and get approval for a **feature brief (FB)** in `.agentic/workflow/briefs/` **before** editing primary application code (e.g. `apps/`, `packages/`, `src/`, or feature tests — match your repo layout). A user story or chat spec is not a substitute for an FB unless the user explicitly **skips workflow** (document that).
+
 Feature brief → spec → task pack → implementation → QA → context updates. Do not skip gates unless the user explicitly records a **skip** in workflow artifacts.
 
 ## Human-only steps
