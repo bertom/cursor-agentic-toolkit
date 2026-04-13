@@ -16,6 +16,17 @@ This guide lives in toolkit source, but the runtime work happens in your project
 
 ## Steps
 
+### Team Kit (do this if you work with others)
+
+After install, **commit `.agentic/`** (default installer gitignore supports this). Then:
+
+1. Read **`.agentic/team/ONBOARDING.md`** — includes the **start prompt** for new chats.
+2. Use **`.agentic/workflow/WORKFLOW_VALIDATION.md`** during the chain.
+3. Before PR: **`.agentic/team/prompts/pr-review-prompt.md`** or **`.agentic/team/CONTEXT_SYNC.md`** (no AI).
+4. Align Copilot: **`.agentic/team/AI_INSTRUCTIONS_SYNC.md`**.
+
+Full policy: **`.agentic/team/TEAM_KIT_V1_REQUIREMENTS.md`**.
+
 ### 1) Install runtime assets
 
 Run installer from toolkit source:
@@ -28,7 +39,7 @@ Run installer from toolkit source:
 
 Open `my-project/` (not toolkit source).
 
-After install, read `.agentic/team/ONBOARDING.md` if you are new (`guide/` and `.agentic/rules/` links inside it need **full** profile). Use `.agentic/workflow/WORKFLOW_VALIDATION.md` for stage-by-stage checks. Before a PR (especially manual coding), use `.agentic/team/prompts/pr-review-prompt.md` (paste or `@`-mention) or `.agentic/team/CONTEXT_SYNC.md` if you use no AI. Record toolkit ref in `.agentic/README.md`.
+If you skipped the **Team Kit** block above: read `.agentic/team/ONBOARDING.md` when new (`guide/` and `.agentic/rules/` links need **full** profile). Record the toolkit ref in `.agentic/README.md`.
 
 ### 3) Ensure runtime layer exists
 

@@ -2,13 +2,26 @@
 
 A lightweight way to run Cursor agents like a **small, disciplined engineering team**—with clear intent, traceable decisions, and real QA—without giving up control.
 
+## Team Kit — collaboration upgrade
+
+**Team Kit** is the first-class path for **small teams**: commit **`.agentic/`** so everyone shares context, workflow artifacts, and rules; validate each stage explicitly; use an **optional PR prompt** before merge; keep **Cursor** and **GitHub Copilot** aligned; onboard skeptics in one pass.
+
+| Start here | Purpose |
+|------------|---------|
+| [ONBOARDING.md](agentic/team/ONBOARDING.md) | First hour for new devs + **start prompt** + handling agent drift |
+| [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md) | Full policy: gitignore defaults, traceability, ops vs repo |
+| [WORKFLOW_VALIDATION.md](agentic/workflow/WORKFLOW_VALIDATION.md) | Agent + human **pass criteria** per workflow stage |
+| [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md) | `.cursor/rules` ↔ `.github/copilot-instructions.md` |
+
+Default install (**`--gitignore-mode committed`**) is tuned for this: **`.agentic/` is not gitignored**; only the **`project-ops`** symlink name is. Intent doc (Dutch): [team-kit.md](team-kit.md).
+
 ## What This Is
 
 If you ship software with Cursor, this toolkit helps you:
 
 - **Turn vague asks into reliable delivery** — intent → brief → spec → tasks → implementation → QA, so agents don’t skip the thinking steps.
 - **Keep context where agents can use it** — curated summaries and policies so every session starts from the same ground truth.
-- **Keep product repos clean** — install a runtime layer in your project and keep specs, task packs, and client materials in external operational memory when you want git hygiene.
+- **Share runtime with your team (Team Kit)** — commit `.agentic/` for shared traceability; use optional **`project-ops/`** for personal or long-form material outside git.
 - **Stay human-in-the-loop** — approval gates, governance defaults, and a human-task lane for work only a person can do.
 
 This repository is the **toolkit source**: templates, Cursor rules, guides, and an installer script you copy into any project. It defines the system; your project repo runs it day to day.
@@ -72,11 +85,9 @@ If you **cannot** commit `.agentic/` (e.g. public repo constraints), use **`--gi
 
 **Toolkit alignment:** after install, fill the table at the top of `.agentic/README.md` with the toolkit git ref you installed from. Toolkit changes are summarized in [CHANGELOG.md](CHANGELOG.md).
 
-**Team Kit:** onboarding, PR prompt, and no-AI context sync live under `agentic/team/` in this repo (installed to `.agentic/team/`). See [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md).
-
 **Cursor rules:** the installer copies toolkit `.cursor/rules/*.mdc` into **`<project-root>/.cursor/rules/`**. Cursor only auto-loads rules from that path when the project folder is your workspace root — not from `.agentic/` or from the toolkit repo alone. See [CURSOR_RULES_RUNTIME.md](agentic/guide/CURSOR_RULES_RUNTIME.md).
 
-**GitHub Copilot (VS Code):** the installer also writes **`<project-root>/.github/copilot-instructions.md`** from `agentic/team/copilot-instructions.project.md` (skipped if the file already exists; use `--force` to replace). Keep Copilot and Cursor aligned: [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md).
+**GitHub Copilot (VS Code):** the installer writes **`<project-root>/.github/copilot-instructions.md`** from `agentic/team/copilot-instructions.project.md` (skipped if the file already exists; use `--force` to replace). See [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md).
 
 Opt out of any `.gitignore` changes:
 
@@ -98,6 +109,19 @@ See:
 
 ## Documentation
 
+### Team Kit (start here for multi-dev repos)
+
+| Document | Purpose |
+|----------|---------|
+| [ONBOARDING.md](agentic/team/ONBOARDING.md) | New dev path, start prompt, drift handling |
+| [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md) | Team policy and acceptance checklist |
+| [WORKFLOW_VALIDATION.md](agentic/workflow/WORKFLOW_VALIDATION.md) | Validation matrix (agents + humans) |
+| [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md) | Cursor + Copilot alignment |
+| [CONTEXT_SYNC.md](agentic/team/CONTEXT_SYNC.md) | No-AI context update before PR |
+| [pr-review-prompt.md](agentic/team/prompts/pr-review-prompt.md) | Optional pre-PR review prompt |
+
+### Core guides
+
 | Document | Purpose |
 |----------|---------|
 | [SYSTEM_OVERVIEW.md](agentic/guide/SYSTEM_OVERVIEW.md) | What the toolkit is and why |
@@ -107,12 +131,12 @@ See:
 | [RUNTIME_PROFILES.md](agentic/guide/RUNTIME_PROFILES.md) | Minimal vs full runtime profiles |
 | [UPGRADE_RUNTIME.md](agentic/guide/UPGRADE_RUNTIME.md) | Upgrade runtime from toolkit source |
 | [END_TO_END_EXAMPLE.md](agentic/guide/END_TO_END_EXAMPLE.md) | Full setup example with external memory |
+| [QUICKSTART.md](agentic/guide/QUICKSTART.md) | Short path to first use |
 | [CURSOR_RULES_RUNTIME.md](agentic/guide/CURSOR_RULES_RUNTIME.md) | Why rules live in `.cursor/rules/` at project root |
 | [CONTEXT_SYSTEM.md](agentic/guide/CONTEXT_SYSTEM.md) | Context model + external sources |
 | [WORKFLOW_EXPLAINED.md](agentic/guide/WORKFLOW_EXPLAINED.md) | Workflow chain and traceability |
 | [HUMAN_TASKS.md](agentic/guide/HUMAN_TASKS.md) | Human handoff and return locations |
 | [DOCUMENTATION_STANDARDS.md](agentic/guide/DOCUMENTATION_STANDARDS.md) | Versioning and traceability |
-| [TEAM_KIT_V1_REQUIREMENTS.md](agentic/team/TEAM_KIT_V1_REQUIREMENTS.md) | Team mode: shared `.agentic/`, Copilot, PR prompt, onboarding |
 | [CHANGELOG.md](CHANGELOG.md) | Toolkit source release notes |
 
 ## License

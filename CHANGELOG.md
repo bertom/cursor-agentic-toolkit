@@ -6,7 +6,9 @@ All notable changes to the **Cursor Agentic Toolkit** (this repository) are docu
 
 ### Changed
 
-- Docs: `SYSTEM_OVERVIEW`, `CONTEXT_SYSTEM`, and `context-index` now state **committed `.agentic/`** (Team Kit) vs **`project-ops`** clearly; install “Next” step clarifies onboarding vs full-profile links; `FAQ` adds team / no-AI entries; `END_TO_END_EXAMPLE` notes default gitignore.
+- Docs: root **README** and **Documentation** tables foreground **Team Kit**; `agentic/README`, `SYSTEM_OVERVIEW`, `QUICKSTART`, and `context-index` call out team collaboration; `SYSTEM_OVERVIEW`, `CONTEXT_SYSTEM`, and `context-index` clarify **committed `.agentic/`** vs **`project-ops`**; install “Next”, `FAQ`, and `END_TO_END_EXAMPLE` updates as before. Workspace rule **agentic-toolkit** implementation gate aligned with **agent-behavior** Rule 11 (primary app roots via **repo-map** / **technical-context**).
+- **Onboarding / agents:** `ONBOARDING.md` adds **Start prompt (new chat)** and **When the agent drifts**; `agent-behavior.md` Rule 11 tightens **FB before application code** (paths via repo-map / technical-context); `copilot-instructions.project.md` mirrors the FB gate for Copilot.
+- **Repo hygiene:** `.gitignore` ignores `_review-svb-agentic` (optional local symlink for runtime diff review).
 
 ### Fixed
 

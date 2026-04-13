@@ -44,6 +44,7 @@ my-project/
 - **Human tasks** — for dashboard/API keys/env vars/portal steps only a human can do: create **one markdown file per item** in `.agentic/human-tasks/pending/` using `human-task-template.md`, **before** you treat the task pack as ready. Mentioning “human task” only in prose or in the task-pack table **without** those files is incomplete
 - **QA is mandatory** — produce a QA report for each task pack; **update that same report as you go** (see `.cursor/rules/qa-checks.mdc` — incremental log) so ad-hoc fixes and re-runs are traceable, not only a single end-of-pack dump
 - **Update context** — after meaningful changes, update repo map, context index, or context files as needed
+- **Team Kit (runtime)** — shared teams: committed `.agentic/`, validation matrix, PR prompt, Copilot sync — start at `.agentic/team/ONBOARDING.md` and `.agentic/team/TEAM_KIT_V1_REQUIREMENTS.md`
 
 ## Git and Security
 
@@ -66,7 +67,7 @@ In runtime usage, these paths map to `.agentic/workflow/...` and may reference `
 
 ### Implementation gate (do not skip)
 
-- **No feature code** in `apps/`, `packages/`, or multi-file `tests/` for **non-trivial** work until **FB + SP + TP** exist **and** the user has **approved** each step (or **explicitly** told you to skip the workflow for *this* item in chat — record that in the brief or a one-line decision note).
+- **No feature code** in primary application directories for **non-trivial** work until **FB + SP + TP** exist **and** the user has **approved** each step (or **explicitly** told you to skip the workflow for *this* item in chat — record that in the brief or a one-line decision note). Common layouts: `apps/`, `packages/`, `src/`; **always** honor paths documented in `.agentic/index/repo-map.md` and `.agentic/context/technical-context.md` when they differ.
 - **Non-trivial** includes: new routes, SEO/syndication/feeds, analytics, integrations, new UI flows, security-sensitive behavior, or anything you would describe as a “feature” — **not** typos, single-line fixes, or tiny refactors under ~3 files with no behavior change.
 - If code **already landed** without artifacts: **stop and backfill** the same day — create FB/SP/TP (mark *backfill / implementation preceded workflow*), add QA, update `context-index.md`. **Never** treat the omission as approval retroactively without user visibility.
 - Read `.cursor/rules/workflow-feature.mdc` for triggers (“let’s do…”, “implement…”) and step-by-step gates.

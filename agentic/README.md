@@ -2,6 +2,16 @@
 
 This directory is the **Agentic Toolkit** runtime layer in **this** repository. In team mode it is usually **committed** so everyone shares context, workflow, and rules.
 
+## Team Kit (collaboration)
+
+**Team Kit** is the recommended path when more than one person touches the repo: shared **`.agentic/`**, explicit **workflow validation**, optional **PR prompt** and **no-AI context sync**, **Cursor** + **Copilot** aligned via [AI_INSTRUCTIONS_SYNC.md](team/AI_INSTRUCTIONS_SYNC.md).
+
+| Doc | Use |
+|-----|-----|
+| [team/ONBOARDING.md](team/ONBOARDING.md) | First hour + start prompt + drift |
+| [team/TEAM_KIT_V1_REQUIREMENTS.md](team/TEAM_KIT_V1_REQUIREMENTS.md) | Policy, gitignore, traceability |
+| [workflow/WORKFLOW_VALIDATION.md](workflow/WORKFLOW_VALIDATION.md) | Pass criteria per stage |
+
 ## Toolkit alignment
 
 Record upgrades so the team knows which template version produced this tree:

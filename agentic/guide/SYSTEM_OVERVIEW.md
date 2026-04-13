@@ -8,6 +8,19 @@ The **Agentic Toolkit** is a reusable workflow layer for Cursor-assisted develop
 
 This is **not** an autonomous system. Human approval remains mandatory.
 
+## Team Kit
+
+For **teams**, treat **`.agentic/`** as the shared contract: context, workflow artifacts, validation, and (via install) **`.cursor/rules`** + **`.github/copilot-instructions.md`**. That is a major upgrade over ad-hoc prompts—everyone reads the same gates and traceability rules.
+
+| Start | Purpose |
+|-------|---------|
+| [ONBOARDING.md](../team/ONBOARDING.md) | Onboarding, **start prompt**, handling agent drift |
+| [TEAM_KIT_V1_REQUIREMENTS.md](../team/TEAM_KIT_V1_REQUIREMENTS.md) | Full requirements: committed runtime, ops vs repo |
+| [WORKFLOW_VALIDATION.md](../workflow/WORKFLOW_VALIDATION.md) | What agents and humans must verify at each stage |
+| [AI_INSTRUCTIONS_SYNC.md](../team/AI_INSTRUCTIONS_SYNC.md) | Keep Cursor and Copilot instructions in sync |
+
+Optional: [CONTEXT_SYNC.md](../team/CONTEXT_SYNC.md) (no-AI PR prep), [pr-review-prompt.md](../team/prompts/pr-review-prompt.md) (paste before merge).
+
 ## 3-Layer Model
 
 The toolkit separates concerns into three layers:

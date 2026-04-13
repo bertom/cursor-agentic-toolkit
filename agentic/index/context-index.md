@@ -2,6 +2,8 @@
 
 > Catalog of all context sources. Agents should read this first to understand local and external context.
 
+**Team Kit:** this index is part of the shared runtime. For onboarding, validation, PR prep, and Cursor↔Copilot sync, use the **Workflow & onboarding** table below and [TEAM_KIT_V1_REQUIREMENTS.md](../team/TEAM_KIT_V1_REQUIREMENTS.md).
+
 In layered mode, this file usually lives in project operational memory:
 `.agentic/index/context-index.md` (with linked external source references, often via `project-ops/`)
 
