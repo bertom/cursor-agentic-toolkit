@@ -13,7 +13,7 @@ A lightweight way to run Cursor agents like a **small, disciplined engineering t
 | [WORKFLOW_VALIDATION.md](agentic/workflow/WORKFLOW_VALIDATION.md) | Agent + human **pass criteria** per workflow stage |
 | [AI_INSTRUCTIONS_SYNC.md](agentic/team/AI_INSTRUCTIONS_SYNC.md) | `.cursor/rules` ↔ `.github/copilot-instructions.md` |
 
-Default install (**`--gitignore-mode committed`**) is tuned for this: **`.agentic/` is not gitignored**; only the **`project-ops`** symlink name is. Intent doc (Dutch): [team-kit.md](team-kit.md).
+Default install (**`--gitignore-mode committed`**) is tuned for this: **`.agentic/` is not gitignored**; only the **`project-ops`** symlink name is.
 
 ## What This Is
 

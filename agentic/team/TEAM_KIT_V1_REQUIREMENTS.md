@@ -1,6 +1,6 @@
 # Team Kit v1 — Finalized requirements
 
-> Operational spec for team mode on top of the [Agentic Toolkit](https://github.com/bertom/cursor-agentic-toolkit). Intent and principles live in [`team-kit.md`](../../team-kit.md) (repo root).
+> Operational spec for team mode on top of the [Agentic Toolkit](https://github.com/bertom/cursor-agentic-toolkit). Orientation and entry points: [README](../../README.md) (Team Kit section), [SYSTEM_OVERVIEW.md](../guide/SYSTEM_OVERVIEW.md), [ONBOARDING.md](ONBOARDING.md).
 
 ## 1. Scope
 
@@ -101,7 +101,7 @@ Copilot does **not** use `.cursor/rules`. Use GitHub’s and VS Code’s **instr
 
 ### 4.3 Adoption note
 
-Pilot with one feature or one sprint if needed; align with iterative adoption in [`team-kit.md`](../../team-kit.md) §10.
+Pilot with one feature or one sprint if needed; expand practices once the team is comfortable with validation and shared context (see [ONBOARDING.md](ONBOARDING.md)).
 
 ---
 

@@ -4,6 +4,10 @@ All notable changes to the **Cursor Agentic Toolkit** (this repository) are docu
 
 ## [Unreleased]
 
+### Removed
+
+- Root **`team-kit.md`** (Dutch intent doc); English coverage remains in README Team Kit section, `TEAM_KIT_V1_REQUIREMENTS.md`, and linked guides.
+
 ### Changed
 
 - Docs: root **README** and **Documentation** tables foreground **Team Kit**; `agentic/README`, `SYSTEM_OVERVIEW`, `QUICKSTART`, and `context-index` call out team collaboration; `SYSTEM_OVERVIEW`, `CONTEXT_SYSTEM`, and `context-index` clarify **committed `.agentic/`** vs **`project-ops`**; install “Next”, `FAQ`, and `END_TO_END_EXAMPLE` updates as before. Workspace rule **agentic-toolkit** implementation gate aligned with **agent-behavior** Rule 11 (primary app roots via **repo-map** / **technical-context**).
